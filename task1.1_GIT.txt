@@ -1,0 +1,40 @@
+cee96e6 HEAD@{0}: commit: Added merge screen and push links
+f294f1b HEAD@{1}: commit: Added push_all screen
+4d539db HEAD@{2}: commit (amend): Added new branch merge screens main+develop+images+styles
+c868ea9 HEAD@{3}: commit: Added new branch merge creens main+develop+images+styles
+6565390 HEAD@{4}: commit (amend): Added CSS style from styles folder
+7a37e89 HEAD@{5}: merge develop: Fast-forward
+75a0bf2 HEAD@{6}: checkout: moving from develop to main
+7a37e89 HEAD@{7}: merge styles: Fast-forward
+b10f4f3 HEAD@{8}: checkout: moving from images to develop
+1b56002 HEAD@{9}: checkout: moving from styles to images
+7a37e89 HEAD@{10}: checkout: moving from develop to styles
+b10f4f3 HEAD@{11}: checkout: moving from styles to develop
+7a37e89 HEAD@{12}: commit: Added CSS ctyle from styles folder
+e5473f5 HEAD@{13}: checkout: moving from develop to styles
+b10f4f3 HEAD@{14}: checkout: moving from images to develop
+1b56002 HEAD@{15}: checkout: moving from styles to images
+e5473f5 HEAD@{16}: commit: Folder has CSS file whith next parameters: background - poweredblue, h1 color - blue, p color - red.
+b10f4f3 HEAD@{17}: checkout: moving from develop to styles
+b10f4f3 HEAD@{18}: checkout: moving from develop to develop
+b10f4f3 HEAD@{19}: commit: Added links to image files
+1b56002 HEAD@{20}: checkout: moving from images to develop
+1b56002 HEAD@{21}: checkout: moving from develop to images
+1b56002 HEAD@{22}: commit: Commit of empty index.html file
+75a0bf2 HEAD@{23}: checkout: moving from main to develop
+75a0bf2 HEAD@{24}: checkout: moving from image to main
+24f5b24 HEAD@{25}: checkout: moving from develop to image
+c11cfca HEAD@{26}: checkout: moving from styles to develop
+7777a0e HEAD@{27}: commit: Added three files which hsve new styles
+c11cfca HEAD@{28}: checkout: moving from develop to styles
+c11cfca HEAD@{29}: checkout: moving from image to develop
+24f5b24 HEAD@{30}: checkout: moving from develop to image
+c11cfca HEAD@{31}: checkout: moving from image to develop
+24f5b24 HEAD@{32}: commit: Added header of HTML5 and sours of image files.
+887baed HEAD@{33}: commit: second empty iso file.
+06a00bd HEAD@{34}: commit: Commit of folder which has the image.iso file.
+c11cfca HEAD@{35}: checkout: moving from develop to image
+c11cfca HEAD@{36}: commit: This is empty file and my second commit in life
+75a0bf2 HEAD@{37}: checkout: moving from main to develop
+75a0bf2 HEAD@{38}: commit: first commit in my life ! This is greate!
+b816187 HEAD@{39}: clone: from git@github.com:SDenisko/DevOps_online_Chernigiv_2021Q4.git
