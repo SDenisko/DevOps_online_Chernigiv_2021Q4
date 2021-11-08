@@ -1,3 +1,0 @@
-#
-A hypervisor is a process that separate OS and programs from HW part of PC. The most famous HVs are ESXi, VirtualBox, Hyper-v, ProxMox.  
-There are several types of hypervisors. The main of it are Type1 "Native hypervisors" and Type 2 "Guest hypervisors". Native hypervisor workes on a HW part of PC (example: ESXi, ProxMox). Guest hypervisor workes on a native OS of host (example: VirtualBox, Hyper-v).
