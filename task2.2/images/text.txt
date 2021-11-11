@@ -1,0 +1,15 @@
+Launch VM without AWS Lightsail
+For this task we should choose EC2 service at the AWS Management Console. After this we have 7 steps with different parameters of VM:
+1. There are list of AMI (Amazon Machine Images). I choose RedHet Linux in the Free tier eligible case. 
+2. On this position i should chose type of VM. List of free tier types has t3.micro and t4g. T3 type use CPU Intel Xenon Platinum, T4g - ARM CPU. I desided chose T3 type. But, as i know ARM CPU x64 has a very good performens too. 
+3. On this step i have a lot of detail parameters of VM. There are number of instances, purchaising option with maximum price you are willing to pay per instance hour,  network parameters, placement groups, domain directory which centralized management experience across a network, credit specification, file system (for mount NFS file system, I desided use it), advanced details for computer environment and more.
+4. Add storage. I added nfs share and 30Gb root volume. 
+5. Add tags. I added RedHat Tag and value =1.
+6.Configure Security Group. In this point i added only ssh rule.
+7. Review of parameters. Create VM.
+ssh connection sucsessful!
+[ec2-user@ip-172-31-21-227 ~]$ pwd
+/home/ec2-user
+
+Adding second volume (Disk_D) to my first AWS instance.
+For this case uses EBS (Elastic Block Store). Go to path EC2>Volumes>Create volume. On this page i can set key parameters (type, size, zone, encryption, TAG). If Instace and Storage have different zone they are don't avaliably to eachother. Next step should be "Attach volume" to instance and if i use linux system - create file system and mount it. 
