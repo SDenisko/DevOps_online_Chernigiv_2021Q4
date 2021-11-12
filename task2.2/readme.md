@@ -45,4 +45,9 @@ Amazon Lightsail - this is easy and user friendly .
 So, let's go. As a task need launch and configure WordPress instance. For this go to the lightsail page and press "Create Instance". After, all steps looks like as in point 4, but with enother parameters (Platform - linux/unix, Blueprint: App+OS>WordPress, doesn't attach any script, use the same key pair for ssh). Press "Create instance" and all DONE. If we have WordPress instance, we should have lightsail static IP address and it should be attach to instance (screens are in images folder). We can do this in Network settings of WordPress instance. Second importent point for WordPress page is DNS zone. This case was intersting for me. DNS zone create menu is in Amazone LightSail page in Network tap. And i was looking for them inside WordPress instance page. It was confuce for me. I create domain DevOpsQ4Chernigiv.com and attach it to static address (A record: aws
 .DevOpsQ4Chernigiv.com - 3.69.145.172). 
 
-If we have nesesary store and retrieve a files we should use S3 service. First step in this case should be create a bucket. For this go to the S3 page and press Create bucket. In new page need set name and zone for AWS bucket, set encryption, control of bucket version, TAGs, object locks (read/write). And press Create Bucket. The second key point is public access to object and bucket.
+If we have nesesary in storage and retrieve a files we should use S3 service. First step in this case should be create a bucket. For this go to the S3 page and press Create bucket. In new page need set name and zone for AWS bucket, set encryption, control of bucket version, TAGs, object locks (read/write). And press Create Bucket. The second key point is public access to object and bucket.
+
+
+For upload files to bucket we can use S3 service web page. On this page should chose bucket and press upload. Next step chose folder or files and press upload. If we need download files from AWS bucket we should select file and press download buttom. 
+The second key point is opened public access to object and bucket from URL.
+Enother way work with S3 service is use AWS CLI.
