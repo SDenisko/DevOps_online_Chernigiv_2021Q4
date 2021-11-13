@@ -50,4 +50,28 @@ If we have nesesary in storage and retrieve a files we should use S3 service. Fi
 
 For upload files to bucket we can use S3 service web page. On this page should chose bucket and press upload. Next step chose folder or files and press upload. If we need download files from AWS bucket we should select file and press download buttom. 
 The second key point is opened public access to object and bucket from URL.
+
+
 Enother way work with S3 service is use AWS CLI.
+Before use thame we should configure it. First of all need IAM user with AdministratorAccess credetentional, AWS Access key ID, AWS Secter Access Key . We cane do this on IAM page. Next step this is configure AWS CLI on the host . In my case i use windows command line and "aws configur" command. For use aws CLI on host should go  to path were was install AWS CLI (c:\Program Files\Amazon\AWSCLI>). Commands which need use for this task:
+
+List of buckets:
+
+c:\Program Files\Amazon\AWSCLI>aws s3 ls
+2021-11-12 14:27:35 devopsq4
+
+upload file to bucket: 
+
+c:\Program Files\Amazon\AWSCLI>aws s3 cp "d:\VirtualBox VMs\DevOps2.pem" s3://devopsq4/
+upload: d:\VirtualBox VMs\DevOps2.pem to s3://devopsq4/DevOps2.pem
+
+Check result of uploading:
+
+c:\Program Files\Amazon\AWSCLI>aws s3 ls s3://devopsq4/
+                           PRE CLI/
+                           PRE task2.2/
+2021-11-13 20:46:33       1700 DevOps2.pem
+
+Amazon has Elastic Container Service (Amazon ECS), so we can deploy Docker containers to cloud.There is a good case for testing and develop.
+First of all should create instance and install Docker to it. 
+AWS instance with RedHat linux was created in enother step of task, we can use it. Connect to it with ssh and install Doker (sudo yum install docker). 
