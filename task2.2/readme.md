@@ -74,4 +74,32 @@ c:\Program Files\Amazon\AWSCLI>aws s3 ls s3://devopsq4/
 
 Amazon has Elastic Container Service (Amazon ECS), so we can deploy Docker containers to cloud.There is a good case for testing and develop.
 First of all should create instance and install Docker to it. 
-AWS instance with RedHat linux was created in enother step of task, we can use it. Connect to it with ssh and install Doker (sudo yum install docker). 
+AWS instance with linux was created in enother point of task2.2, we can use it. Connect to it with ssh, install Docker (sudo yum install docker), install and configure AWS CLI.  
+We can create docker container, create image from it and push to AWS ECR. 
+For create container let's use dockerfile, there are all nececcary parameters  (core image, dependencies, configurations for them).
+
+Build image: 
+ec2-user@ip-172-31-45-170 ~]$ sudo docker build -t hello-world .
+Sending build context to Docker daemon  8.192kB
+Step 1/6 : FROM ubuntu:18.04
+18.04: Pulling from library/ubuntu
+284055322776: Pull complete
+Digest: sha256:0fedbd5bd9fb72089c7bbca476949e10593cebed9b1fb9edf5b79dbbacddd7d6
+Status: Downloaded newer image for ubuntu:18.04
+ ---> 5a214d77f5d7
+Step 2/6 : RUN apt-get update &&  apt-get -y install apache2
+ ---> Running in 6afb990601d6
+.........................
+Run docker image:
+
+[ec2-user@ip-172-31-45-170 ~]$ sudo docker images --filter reference=hello-world
+REPOSITORY    TAG       IMAGE ID       CREATED          SIZE
+hello-world   latest    cfa2eb488db4   31 seconds ago   198MB
+
+We use apache2 inside Ubuntu container, so, for check should be open and forward port 80 on host and container.
+[ec2-user@ip-172-31-45-170 ~]$ sudo docker run -t -i -p 80:80 hello-world
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+ 
+
+ 
+
