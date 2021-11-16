@@ -1,4 +1,4 @@
-I created AWS Free tier account before Epam courses, so this part of task 2.2 was without issues. 
+"https://github.com/Rolika4/DevOps_online_Avdiivka_2021Q4/blob/master/m2/task2.2/Scrennshots/4%2C0.jpg"https://github.com/Rolika4/DevOps_online_Avdiivka_2021Q4/blob/master/m2/task2.2/Scrennshots/4%2C0.jpgI created AWS Free tier account before Epam courses, so this part of task 2.2 was without issues. 
 AWS hand-on tutorial and AWS Well Architecte Labs makes home studie more effective, to my position.
 Let's start with Amazon Lightsail. 
 For this sign in to account, AWS Management Console and in drop down menu "All Services" choose  "Lightsail". At opened page choose Instances and press "Creare instance". There are some parameters:
@@ -6,6 +6,7 @@ For this sign in to account, AWS Management Console and in drop down menu "All S
 2. Platform (Linux/Windows). I choose Linux/Unix.
 3. Blueprint. I choose OS Only and Ubuntu 20.04 TLS.
 4. We can add a script that will start first time at our instance.
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/NFS_enabled_2.JPG" width="250">
 5. I desided  create new ssh key. Very importent: don't forget download and import it to your host.
 6. Choose instance plan 3.5 USD/month. This is free plan for three first months.
 7. Enter the name for our instance. I desided enter "DevOpsOnline" name.
@@ -42,8 +43,15 @@ And this is my case. Some images are in image folder.
 
 
 Amazon Lightsail - this is easy and user friendly . 
-So, let's go. As a task need launch and configure WordPress instance. For this go to the lightsail page and press "Create Instance". After, all steps looks like as in point 4, but with enother parameters (Platform - linux/unix, Blueprint: App+OS>WordPress, doesn't attach any script, use the same key pair for ssh). Press "Create instance" and all DONE. If we have WordPress instance, we should have lightsail static IP address and it should be attach to instance (screens are in images folder). We can do this in Network settings of WordPress instance. Second importent point for WordPress page is DNS zone. This case was intersting for me. DNS zone create menu is in Amazone LightSail page in Network tap. And i was looking for them inside WordPress instance page. It was confuce for me. I create domain DevOpsQ4Chernigiv.com and attach it to static address (A record: aws
-.DevOpsQ4Chernigiv.com - 3.69.145.172). 
+So, let's go. As a task need launch and configure WordPress instance. For this go to the lightsail page and press "Create Instance". After, all steps looks like as in point 4, 
+but with enother parameters (Platform - linux/unix, Blueprint: App+OS>WordPress, doesn't attach any script, use the same key pair for ssh). 
+Press "Create instance" and all DONE. 
+If we have WordPress instance, we should have lightsail static IP address and it should be attach to instance (screens are in images folder). 
+We can do this in Network settings of WordPress instance. Second importent point for WordPress page is DNS zone. This case was intersting for me. DNS zone create menu is in Amazone LightSail page in Network tap. 
+And i was looking for them inside WordPress instance page. It was confuce for me. 
+I entered domain DevOpsQ4Chernigiv.com and attach it to static address in lightsail options (A record: aws
+.DevOpsQ4Chernigiv.com - 3.69.145.172).This domain name is no free tier, so we can use only static ip address for acces to webpage. 
+For notes: for buy domaine and attach it to static ip we can use Route 53 service (5-12 usd/year).    
 
 If we have nesesary in storage and retrieve a files we should use S3 service. First step in this case should be create a bucket. For this go to the S3 page and press Create bucket. In new page need set name and zone for AWS bucket, set encryption, control of bucket version, TAGs, object locks (read/write). And press Create Bucket. The second key point is public access to object and bucket.
 
@@ -53,7 +61,7 @@ The second key point is opened public access to object and bucket from URL.
 
 
 Enother way work with S3 service is use AWS CLI.
-Before use thame we should configure it. First of all need IAM user with AdministratorAccess credetentional, AWS Access key ID, AWS Secter Access Key . We cane do this on IAM page. Next step this is configure AWS CLI on the host . In my case i use windows command line and "aws configur" command. For use aws CLI on host should go  to path were was install AWS CLI (c:\Program Files\Amazon\AWSCLI>). Commands which need use for this task:
+Before use this we should configure it. First of all need IAM user with AdministratorAccess credetentional, AWS Access key ID, AWS Secter Access Key . We cane do this on IAM page. Next step this is configure AWS CLI on the host . In my case i use windows command line and "aws configur" command. For use aws CLI on host should go  to path were was install AWS CLI (c:\Program Files\Amazon\AWSCLI>). Commands which need use for this task:
 
 List of buckets:
 
@@ -101,5 +109,34 @@ We use apache2 inside Ubuntu container, so, for check should be open and forward
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
  
 
- 
+Let's run this container on EC2 instance.
+For this we need some steps:
+1. Ceate ECR repository: 
+aws ecr create-repository --repository-name hello-repo
+The key options are name and region of repository.
+2. Tag the image with the repository URL value:
+docker tag hello-world 706516783771.dkr.ecr.us-east-2.amazonaws.com/hello-repo
+3. Login to repository:
+[ec2-user@ip-172-31-45-170 ~]$ aws ecr get-login-password | docker login --username AWS --password-stdin 706516783771.dkr.ecr.us-east-2.amazonaws.com
+WARNING! Your password will be stored unencrypted in /home/ec2-user/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+4. Push container to ECR repository:
+[ec2-user@ip-172-31-45-170 ~]$ docker push 706516783771.dkr.ecr.us-east-2.amazonaws.com/hello-repo
+Using default tag: latest
+The push refers to repository [706516783771.dkr.ecr.us-east-2.amazonaws.com/hello-repo]
+53384c5fc94e: Layer already exists
+ff4f9e5c28e1: Layer already exists
+41472bce8adc: Layer already exists
+824bf068fd3d: Layer already exists
+latest: digest: sha256:d02219b8d6332d3c9537191512cdfae1e51190425a9d3dc23a3ec599fd4b9377 size: 1155
+
+5. Next key step are create ECS Cluster. For this press Create Cluster>chose "EC2 Linux + Networking" type. There are a lot of key parameters: Name of cluster, Provisioning Model, Type of instance, Number of instances, Networking (VPC, Subnets, Security group inbound rules). At the End press Create.
+After this we gete Cluster and ECS-instance on the EC2 page. All containers start on this instance. 
+6. For start the docker-container uses "Task Definitions" menu on ECS page. Press New Task Definition, chose EC2 type, set name for task, network mode, task size, add container name and link from ECR repository and press Create. 
+7. Task Done, but need run it in claster. For this go to the Task tabe inside Cluster, chose lounch types> EC2, task name, cluster, press Run Task. If all ports forwarded - ALL DONE.
+Second part of the task was hard for me, i could not understand sequence of actions and interconnection between them. 
+
 
