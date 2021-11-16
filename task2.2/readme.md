@@ -208,10 +208,29 @@ After this we gete Cluster and ECS-instance on the EC2 page. All containers star
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/task_definition.JPG" width="250">
 
 7. Task Done, but need run it in claster. For this go to the Task tabe inside Cluster, chose lounch types> EC2, task name, cluster, press Run Task. If all ports forwarded - ALL DONE.
+
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/opened_port.JPG" width="250">
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/check_container.JPG" width="250">
 
 Point 14 of the task2.2 was hard for me, i could not understand sequence of actions and interconnection between them. 
 
+S3 service has a perfect option, it can contain static Website. 
+Let's do this.
+First of all need create bucket, name of it should be the same domaine name of site. Only for comfort. 
+Next step  - enable static website hosting for your bucket, and enter the exact name of our index.html. Upload index.html file to bucket.
 
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/enable_website_bucket.JPG" width="250">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/uploaded_index.JPG" width="250">
+
+Next key step this is - Public Access Settings and Bucket Policy. For this go to the bucket settings, choose Permissions. Under Block public access, choose Edit. Clear Block all public access, and choose Save changes. Nexst step "Attach a bucket policy". 
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/public_access.JPG" width="250">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/bucket_policy.JPG" width="250">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/b9bf0814558a2e3a73f812ee5bc0eea9ffefef73/task2.2/images/public_result.JPG" width="250">
+
+All DONE. Let's check link:
+http://jurnalq4web.s3-website.us-east-2.amazonaws.com/
