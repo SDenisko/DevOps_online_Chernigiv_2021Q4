@@ -1,0 +1,73 @@
+Packet Tracer PC Command Line 1.0
+C:\>ping 10.87.23.20
+
+Pinging 10.87.23.20 with 32 bytes of data:
+
+Reply from 10.87.23.20: bytes=32 time<1ms TTL=128
+Reply from 10.87.23.20: bytes=32 time=1ms TTL=128
+Reply from 10.87.23.20: bytes=32 time<1ms TTL=128
+Reply from 10.87.23.20: bytes=32 time<1ms TTL=128
+
+Ping statistics for 10.87.23.20:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+C:\>ping 10.87.23.100
+
+Pinging 10.87.23.100 with 32 bytes of data:
+
+Reply from 10.87.23.100: bytes=32 time<1ms TTL=128
+Reply from 10.87.23.100: bytes=32 time=1ms TTL=128
+Reply from 10.87.23.100: bytes=32 time<1ms TTL=128
+Reply from 10.87.23.100: bytes=32 time=1ms TTL=128
+
+Ping statistics for 10.87.23.100:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+
+
+
+
+C:\>tracert 6.87.23.1
+
+Tracing route to 6.87.23.1 over a maximum of 30 hops: 
+
+  1   *         *         1 ms      6.87.23.1
+
+Trace complete.
+
+C:\>tracert 6.87.23.150
+
+Tracing route to 6.87.23.150 over a maximum of 30 hops: 
+
+  1   0 ms      1 ms      0 ms      6.87.23.1
+  2   1 ms      0 ms      14 ms     6.87.23.150
+
+Trace complete.
+
+
+
+VLAN:
+
+
+Router(config)#interface GigabitEthernet0/0.2
+Router(config-subif)#encapsulation dot1Q 2
+Router(config-subif)#ip address 6.23.87.1 255.255.255.192
+Router(config-subif)#exit
+Router(config)#interface GigabitEthernet0/0.3
+Router(config-subif)#encapsulation dot1Q 3
+Router(config-subif)#ip address 6.23.87.65 255.255.255.192
+Router(config-subif)#exit
+Router(config)#interface GigabitEthernet0/0.4
+Router(config-subif)#encapsulation dot1Q 4
+Router(config-subif)#ip address 6.23.87.129 255.255.255.192
+Router(config-subif)#exit
+
+
+
+
+
+
