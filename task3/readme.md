@@ -149,4 +149,132 @@ I want know trues!! :)
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/fd4c9f0591d9765754e090503053636f9025ac79/task3/images/1_2/VLAN6.jpg" width="250">
 
 
+Routing configuration.
 
+We can detect two types of routing: manual and automatic.
+For manual routing, we need to write the subnet to which we need access and ip address of next hop to the routing table. For example, if we need access to 4.25.99.4/24 from WRT 300, should write  to route table of ISP2: 4.25.99.0 255.255.255.0 and next hop 35.4.99.130.  
+Check:
+
+tracert client 3 thrue wifi router:
+C:\>tracert 10.99.25.2
+
+Tracing route to 10.99.25.2 over a maximum of 30 hops: 
+
+  1   15 ms     21 ms     23 ms     192.168.0.1
+  2   *         *         *         Request timed out.
+  3   *         *         *         Request timed out.
+  4   21 ms     8 ms      16 ms     10.99.25.2
+
+Trace complete.
+
+C:\>tracert 4.25.99.4
+
+Tracing route to 4.25.99.4 over a maximum of 30 hops: 
+
+  1   18 ms     24 ms     54 ms     192.168.0.1
+  2   *         *         *         Request timed out.
+  3   *         *         *         Request timed out.
+  4   *         24 ms     15 ms     4.25.99.4
+
+Trace complete.
+
+tracert Client1:
+C:\>tracert 4.25.99.4
+
+Tracing route to 4.25.99.4 over a maximum of 30 hops: 
+
+  1   0 ms      0 ms      1 ms      10.99.25.1
+  2   1 ms      11 ms     1 ms      35.4.99.66
+  3   12 ms     1 ms      1 ms      4.25.99.4
+
+Trace complete.
+
+C:\>tracert 35.4.99.194
+
+Tracing route to 35.4.99.194 over a maximum of 30 hops: 
+
+  1   0 ms      0 ms      0 ms      10.99.25.1
+  2   1 ms      1 ms      0 ms      35.4.99.2
+  3   *         *         *         Request timed out.
+  4   *         *         *         Request timed out.
+  5   *         *         *         Request timed out.
+  6   *         *         *         Request timed out.
+  7   *         *         *         Request timed out.
+  8   *         *         *         Request timed out.
+
+tracert server 1:
+
+C:\>tracert 10.99.25.2
+
+Tracing route to 10.99.25.2 over a maximum of 30 hops: 
+
+  1   0 ms      0 ms      0 ms      4.25.99.1
+  2   1 ms      1 ms      0 ms      35.4.99.65
+  3   14 ms     12 ms     10 ms     10.99.25.2
+
+Trace complete.
+
+C:\>tracert 35.4.99.194
+
+Tracing route to 35.4.99.194 over a maximum of 30 hops: 
+
+  1   0 ms      1 ms      1 ms      4.25.99.1
+  2   0 ms      11 ms     11 ms     35.4.99.129
+  3   *         *         *         Request timed out.
+  4   *         *         *         Request timed out.
+  5   *         *         *         Request timed out.
+  6   *         *         *         Request timed out.
+  7   *         *         *         Request timed out.
+  8   *         *         *         Request timed out.
+
+
+"Request timed out" received from WRT300 because its firewall was dropping packets.
+
+Automatic routing uses RIP. So, you should enable it in routers and specify the addresses in the class format (35.0.0.0 10.0.0.0) that they have on the ports. 
+Let's check result:
+
+Client 3:
+C:\>
+C:\>tracert 10.99.25.2
+
+Tracing route to 10.99.25.2 over a maximum of 30 hops: 
+
+  1   20 ms     4 ms      24 ms     192.168.0.1
+  2   *         *         *         Request timed out.
+  3   *         *         *         Request timed out.
+  4   27 ms     32 ms     23 ms     10.99.25.2
+
+Trace complete.
+
+C:\>tracert 4.25.99.4
+
+Tracing route to 4.25.99.4 over a maximum of 30 hops: 
+
+  1   27 ms     23 ms     29 ms     192.168.0.1
+  2   *         *         *         Request timed out.
+  3   *         *         *         Request timed out.
+  4   31 ms     15 ms     24 ms     4.25.99.4
+
+Trace complete.
+
+Client 1:
+C:\>tracert 4.25.99.4
+
+Tracing route to 4.25.99.4 over a maximum of 30 hops: 
+
+  1   0 ms      0 ms      0 ms      10.99.25.1
+  2   0 ms      0 ms      1 ms      35.4.99.66
+  3   11 ms     10 ms     12 ms     4.25.99.4
+
+Trace complete.
+
+C:\>tracert 35.4.99.194
+
+Tracing route to 35.4.99.194 over a maximum of 30 hops: 
+
+  1   0 ms      1 ms      10 ms     10.99.25.1
+  2   0 ms      0 ms      0 ms      35.4.99.2
+  3   *         *         *         Request timed out.
+  4   *         *         *         Request timed out.
+  5   *         *         *         Request timed out.
+  6   *         *         *         Request timed out.
