@@ -287,11 +287,103 @@ Tracing route to 35.4.99.194 over a maximum of 30 hops:
 DHCP (Dynamic Host Configuration Protocol) allows you to automatically configure your network (IP address, mask, gateway, DNS server IP address) on your PC. 
 Let's configure DHCP server in Interprise Server:
 
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/dhcp_server.JPG" width="300">
+
+Enable DHCP on clients PCs in our project and check network using Ping tool: 
+
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/dhcp_client2.JPG" width="300">
+
+
+ping Client 2 to Client 1:
+
+C:\>ping 10.87.23.2
+
+Pinging 10.87.23.2 with 32 bytes of data:
+
+Reply from 10.87.23.2: bytes=32 time=37ms TTL=125
+Reply from 10.87.23.2: bytes=32 time=22ms TTL=125
+Reply from 10.87.23.2: bytes=32 time=16ms TTL=125
+Reply from 10.87.23.2: bytes=32 time=23ms TTL=125
+
+Ping statistics for 10.87.23.2:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 16ms, Maximum = 37ms, Average = 24ms
+
+C:\>
+
+
+Enable DHCP on the Client 3 and configure DHCP server on the wifi router:
+
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/dhcp_wifi.JPG" width="300">
+
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/dhcp_client3.JPG" width="300">
+
+ping Client 3 to Client 1:
+
+C:\>ping 10.87.23.2
+
+Pinging 10.87.23.2 with 32 bytes of data:
+
+Reply from 10.87.23.2: bytes=32 time=37ms TTL=125
+Reply from 10.87.23.2: bytes=32 time=22ms TTL=125
+Reply from 10.87.23.2: bytes=32 time=16ms TTL=125
+Reply from 10.87.23.2: bytes=32 time=23ms TTL=125
+
+Ping statistics for 10.87.23.2:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 16ms, Maximum = 37ms, Average = 24ms
+
+C:\>
+
+	DNS Server
+
+DNS (Domain Name System) server allows words to be used as IP address. Let's configure our DNS Server, add it to DHCP server and try how it work.
 
 
 
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/dns_srv.JPG" width="300">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/dhcp_dns_client1.JPG" width="300">
 
 
 
+Ping from Client1 to WebServer1:
+
+C:\>ping domain1.com
+
+Pinging 4.25.99.2 with 32 bytes of data:
+
+Request timed out.
+Reply from 4.25.99.2: bytes=32 time=11ms TTL=126
+Reply from 4.25.99.2: bytes=32 time=10ms TTL=126
+Reply from 4.25.99.2: bytes=32 time=24ms TTL=126
+
+Ping statistics for 4.25.99.2:
+    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 10ms, Maximum = 24ms, Average = 15ms
+
+C:\>
+
+      NAT and Port Forwarding
+
+NAT (Network Address Translation) mechanism translates one address to another in a forwarding packet. For this case it can change port of the package.
+Let's add WebServer with index.html file to Home Officce workspace, open all ports for HTTP protocol to this server in WiFi router, configure DNS Server, add it to  DHCP server in WiFi router and check result:
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/forward.JPG" width="300">
+
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/HomeServerWeb.JPG" width="300">
+
+
+
+It works!!!
+
+Thanks a lot for this practice!!
 
 
