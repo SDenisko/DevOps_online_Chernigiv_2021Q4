@@ -375,7 +375,7 @@ C:\>
 NAT (Network Address Translation) mechanism translates one address to another in a forwarding packet. For this case it can change port of the package.
 Let's add WebServer with index.html file to Home Officce workspace, open all ports for HTTP protocol to this server in WiFi router, configure DNS Server, add it to  DHCP server in WiFi router and check result:
 
-<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/forward.JPG" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/649f76599c3f3a4199f7d6378e079adcc3334483/task3/images/4/forward.JPG" width="300">
 
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7624c1eeeaacb8604f29a7fe26f4a0a423166f73/task3/images/4/HomeServerWeb.JPG" width="300">
