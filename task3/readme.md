@@ -278,3 +278,20 @@ Tracing route to 35.4.99.194 over a maximum of 30 hops:
   4   *         *         *         Request timed out.
   5   *         *         *         Request timed out.
   6   *         *         *         Request timed out.
+
+
+
+
+    DHCP DNS NAT
+
+DHCP (Dynamic Host Configuration Protocol) allows you to automatically configure your network (IP address, mask, gateway, DNS server IP address) on your PC. 
+Let's configure DHCP server in Interprise Server:
+
+
+
+
+
+
+
+
+
