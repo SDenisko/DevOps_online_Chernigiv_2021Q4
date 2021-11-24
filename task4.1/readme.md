@@ -36,7 +36,7 @@ There are three variants:
 - many-to-many;
 I decided chose "one-to-one" point.
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6bc50eb3fead23a5ed6b4d5c2a1043e72b706f3b/task4.1/images/scheme_db.jpg" width="300">
 
 So, let's create DBs in MySql:
 
