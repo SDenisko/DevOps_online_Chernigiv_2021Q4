@@ -187,3 +187,124 @@ ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint f
 mysql>
 
 
+########SELECT##########
+
+mysql> SELECT * FROM product_transaction WHERE trans_id =1;
++---------+----------+
+| prod_id | trans_id |
++---------+----------+
+|       1 |        1 |
+|       2 |        1 |
+|       3 |        1 |
++---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM product;
++----+--------------+--------+------+
+| id | product_name | price  | qty  |
++----+--------------+--------+------+
+|  1 | milk         | 27UAH  | 27L  |
+|  2 | meat         | 100UAH | 7kg  |
+|  3 | bread        | 19UAH  | 7    |
+|  4 | sausages     | 80UAH  | 12kg |
+|  5 | meat_pig     | 100UAH | 7kg  |
++----+--------------+--------+------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT product_name FROM product WHERE id =5;
++--------------+
+| product_name |
++--------------+
+| meat_pig     |
++--------------+
+1 row in set (0.00 sec)
+mysql> SELECT product_name FROM product WHERE id >2;
++--------------+
+| product_name |
++--------------+
+| bread        |
+| sausages     |
+| meat_pig     |
++--------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT id AS 'номер', product_name AS 'Продукт питания' FROM product WHER
+E id >2;
++------------+-------------------------------+
+| номер      | Продукт питания               |
++------------+-------------------------------+
+|          3 | bread                         |
+|          4 | sausages                      |
+|          5 | meat_pig                      |
++------------+-------------------------------+
+3 rows in set (0.00 sec)
+mysql> SELECT * FROM product ORDER BY product_name;
++----+--------------+--------+------+
+| id | product_name | price  | qty  |
++----+--------------+--------+------+
+|  3 | bread        | 19UAH  | 7    |
+|  2 | meat         | 100UAH | 7kg  |
+|  5 | meat_pig     | 100UAH | 7kg  |
+|  1 | milk         | 27UAH  | 27L  |
+|  4 | sausages     | 80UAH  | 12kg |
++----+--------------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM product WHERE price LIKE "1%" AND qty LIKE "7%";
++----+--------------+--------+-----+
+| id | product_name | price  | qty |
++----+--------------+--------+-----+
+|  2 | meat         | 100UAH | 7kg |
+|  3 | bread        | 19UAH  | 7   |
+|  5 | meat_pig     | 100UAH | 7kg |
++----+--------------+--------+-----+
+3 rows in set (0.00 sec)
+mysql> SELECT * FROM product WHERE price LIKE "1%" OR qty LIKE "%kg";
++----+--------------+--------+------+
+| id | product_name | price  | qty  |
++----+--------------+--------+------+
+|  2 | meat         | 100UAH | 7kg  |
+|  3 | bread        | 19UAH  | 7    |
+|  4 | sausages     | 80UAH  | 12kg |
+|  5 | meat_pig     | 100UAH | 7kg  |
++----+--------------+--------+------+
+4 rows in set (0.00 sec)
+mysql> ALTER TABLE product CHANGE age age_days INT;
+Query OK, 0 rows affected (0.39 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from product;
++----+--------------+--------+------+----------+
+| id | product_name | price  | qty  | age_days |
++----+--------------+--------+------+----------+
+|  1 | milk         | 27UAH  | 27L  |       10 |
+|  2 | meat         | 100UAH | 7kg  |       20 |
+|  3 | bread        | 19UAH  | 7    |       30 |
+|  4 | sausages     | 80UAH  | 12kg |       40 |
+|  5 | meat_pig     | 100UAH | 7kg  |       50 |
++----+--------------+--------+------+----------+
+5 rows in set (0.00 sec)
+mysql> SELECT AVG(age_days) FROM product;
++---------------+
+| AVG(age_days) |
++---------------+
+|       30.0000 |
++---------------+
+1 row in set (0.00 sec)
+mysql> SELECT MAX(age_days), MIN(age_days) FROM product;
++---------------+---------------+
+| MAX(age_days) | MIN(age_days) |
++---------------+---------------+
+|            50 |            10 |
++---------------+---------------+
+1 row in set (0.00 sec)
+mysql> SELECT age_days, COUNT(age_days) FROM product GROUP BY age_days;         +----------+-----------------+
+| age_days | COUNT(age_days) |
++----------+-----------------+
+|       10 |               1 |
+|       20 |               2 |
+|       30 |               1 |
+|       40 |               1 |
+|       50 |               1 |
++----------+-----------------+
+5 rows in set (0.00 sec)
