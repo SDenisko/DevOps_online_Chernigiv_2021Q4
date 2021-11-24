@@ -122,5 +122,68 @@ mysql> DESCRIBE transactions;
 +----------+-----------+------+-----+---------+----------------+
 3 rows in set (0.00 sec)
 
+let's fill the tables, and at the end try enter incorrect INSERT for check relationship between tables. 
+
+mysql> show tables;
++------------------------+
+| Tables_in_DevOpsOnline |
++------------------------+
+| customer               |
+| product                |
+| product_transaction    |
+| transactions           |
++------------------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM customer;
++----+------------+
+| id | postalCode |
++----+------------+
+|  1 | 14000      |
+|  2 | 14001      |
+|  3 | 14002      |
+|  4 | 14003      |
++----+------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM product;
++----+--------------+--------+------+
+| id | product_name | price  | qty  |
++----+--------------+--------+------+
+|  1 | milk         | 27UAH  | 27L  |
+|  2 | meat         | 100UAH | 7kg  |
+|  3 | bread        | 19UAH  | 7    |
+|  4 | sausages     | 80UAH  | 12kg |
+|  5 | meat_pig     | 100UAH | 7kg  |
++----+--------------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM transactions;
++----+---------+---------------------+
+| id | cust_id | timedate            |
++----+---------+---------------------+
+|  1 |       2 | 2021-11-24 12:27:34 |
+|  2 |       3 | 2021-11-24 12:37:34 |
+|  3 |       4 | 2021-11-24 12:38:34 |
+|  4 |       1 | 2021-11-24 12:39:34 |
++----+---------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM product_transaction;
++---------+----------+
+| prod_id | trans_id |
++---------+----------+
+|       1 |        1 |
+|       2 |        1 |
+|       3 |        1 |
+|       3 |        2 |
+|       4 |        2 |
+|       5 |        2 |
++---------+----------+
+6 rows in set (0.00 sec)
+
+mysql> INSERT INTO product_transaction (prod_id, trans_id) VALUES (6, 2);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`DevOpsOnline`.`product_transaction`, CONSTRAINT `product_transaction_ibfk_1` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`))
+mysql>
 
 
