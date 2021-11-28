@@ -1180,9 +1180,38 @@ DUMP is DONE and CHACKED.
 
 ################# PART 3 #######################
 
+I created AWS DynamoDB table, added some items to it and try use Query and Scan filters.
+ 
+For create table we can use AWS CLI or DynamoDB web page. For create table in CLI we should know which format of file  use, for example json.
+In this case should be created json file with text:
 
+{
+    "TableName": "DevOpsOnline",
+    "AttributeDefinitions": [
+        { "AttributeName": "Names", "AttributeType": "SecondNames" }
+      ],
+    "KeySchema": [
+      { "AttributeName": "Names"
+        , "KeyType": "HASH" }
+    ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 10,
+      "WriteCapacityUnits":10 
+    }
+}
 
+Command should be like that:
 
+aws dynamodb create-table --cli-input-json <path to json file>
 
+But, i decided use web page. Results:
 
+<img src="" width="300" >
 
+<img src="" width="300" >
+
+<img src="" width="300" >
+
+<img src="" width="300" >
+
+<img src="" width="300" >
