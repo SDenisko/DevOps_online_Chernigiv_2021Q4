@@ -1186,23 +1186,41 @@ For create table we can use AWS CLI or DynamoDB web page. For create table in CL
 In this case should be created json file with text:
 
 {
+
     "TableName": "DevOpsOnline",
+
     "AttributeDefinitions": [
+
         { "AttributeName": "Names", "AttributeType": "SecondNames" }
+
       ],
+
     "KeySchema": [
+
       { "AttributeName": "Names"
+
         , "KeyType": "HASH" }
+
     ],
+
     "ProvisionedThroughput": {
+
       "ReadCapacityUnits": 10,
+
       "WriteCapacityUnits":10 
+
     }
+
 }
+
+
 
 Command should be like that:
 
+
 aws dynamodb create-table --cli-input-json <path to json file>
+
+
 
 But, i decided use web page. Results:
 
