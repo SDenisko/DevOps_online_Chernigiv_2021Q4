@@ -609,7 +609,7 @@ First of oll should create RDS AWS public database and add rule for access from 
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/dcbda3a3d4e312134ec56a66f50d5ac6d44b8f78/task4.1/images/exportDB4.jpg" width="300">
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/676b6f1be4265695dd0ae9d63a11da988638166a/task4.1/images/rules.JPG" width="300">
 
 
 Try to connect:
