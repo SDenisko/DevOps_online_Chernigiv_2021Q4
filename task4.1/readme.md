@@ -601,9 +601,16 @@ Let's export our DB to RDS AWS.
 
 First of oll should create RDS AWS public database and add rule for access from local host:
 
-img
-img
-img
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/dcbda3a3d4e312134ec56a66f50d5ac6d44b8f78/task4.1/images/exportDB1.jpg" width="300">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/dcbda3a3d4e312134ec56a66f50d5ac6d44b8f78/task4.1/images/exportDB2.JPG" width="300">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/dcbda3a3d4e312134ec56a66f50d5ac6d44b8f78/task4.1/images/exportDB3.jpg" width="300">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/dcbda3a3d4e312134ec56a66f50d5ac6d44b8f78/task4.1/images/exportDB4.jpg" width="300">
+
+<img src="" width="300">
+
 
 Try to connect:
 
