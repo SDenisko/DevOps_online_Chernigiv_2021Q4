@@ -68,23 +68,34 @@ mysql>CREATE TABLE product_transaction (prod_id INT, trans_id INT, PRIMARY KEY(p
 mysql> show tables;
 
 +------------------------+
+
 | Tables_in_DevOpsOnline |
-+------------------------+
-| customer               |
-| product                |
-| product_transaction    |
-| transactions           |
+
 +------------------------+
 
-4 rows in set (0.01 sec)
+| customer               |
+
+| product                |
+
+| product_transaction    |
+
+| transactions           |
+
++------------------------+
+
 
 mysql> DESCRIBE customer;
 
 +------------+-------------+------+-----+---------+----------------+
+
 | Field      | Type        | Null | Key | Default | Extra          |
+
 +------------+-------------+------+-----+---------+----------------+
+
 | id         | int         | NO   | PRI | NULL    | auto_increment |
+
 | postalCode | varchar(15) | YES  |     | NULL    |                |
+
 +------------+-------------+------+-----+---------+----------------+
 
 
@@ -92,12 +103,19 @@ mysql> DESCRIBE customer;
 mysql> DESCRIBE product;
 
 +--------------+-------------+------+-----+---------+----------------+
+
 | Field        | Type        | Null | Key | Default | Extra          |
+
 +--------------+-------------+------+-----+---------+----------------+
+
 | id           | int         | NO   | PRI | NULL    | auto_increment |
+
 | product_name | varchar(50) | NO   |     | NULL    |                |
+
 | price        | varchar(7)  | NO   |     | NULL    |                |
+
 | qty          | varchar(4)  | NO   |     | NULL    |                |
+
 +--------------+-------------+------+-----+---------+----------------+
 
 
@@ -105,10 +123,15 @@ mysql> DESCRIBE product;
 mysql> DESCRIBE product_transaction;
 
 +----------+------+------+-----+---------+-------+
+
 | Field    | Type | Null | Key | Default | Extra |
+
 +----------+------+------+-----+---------+-------+
+
 | prod_id  | int  | NO   | PRI | NULL    |       |
+
 | trans_id | int  | NO   | PRI | NULL    |       |
+
 +----------+------+------+-----+---------+-------+
 
 
@@ -117,11 +140,17 @@ mysql> DESCRIBE product_transaction;
 mysql> DESCRIBE transactions;
 
 +----------+-----------+------+-----+---------+----------------+
+
 | Field    | Type      | Null | Key | Default | Extra          |
+
 +----------+-----------+------+-----+---------+----------------+
+
 | id       | int       | NO   | PRI | NULL    | auto_increment |
+
 | cust_id  | int       | YES  | MUL | NULL    |                |
+
 | timedate | timestamp | YES  |     | NULL    |                |
+
 +----------+-----------+------+-----+---------+----------------+
 
 
@@ -131,63 +160,101 @@ let's fill the tables, and at the end try enter incorrect INSERT for check relat
 mysql> show tables;
 
 +------------------------+
+
 | Tables_in_DevOpsOnline |
+
 +------------------------+
+
 | customer               |
+
 | product                |
+
 | product_transaction    |
+
 | transactions           |
+
 +------------------------+
 
 
 mysql> SELECT * FROM customer;
 
 +----+------------+
+
 | id | postalCode |
+
 +----+------------+
+
 |  1 | 14000      |
+
 |  2 | 14001      |
+
 |  3 | 14002      |
+
 |  4 | 14003      |
+
 +----+------------+
 
 
 mysql> SELECT * FROM product;
 
 +----+--------------+--------+------+
+
 | id | product_name | price  | qty  |
+
 +----+--------------+--------+------+
+
 |  1 | milk         | 27UAH  | 27L  |
+
 |  2 | meat         | 100UAH | 7kg  |
+
 |  3 | bread        | 19UAH  | 7    |
+
 |  4 | sausages     | 80UAH  | 12kg |
+
 |  5 | meat_pig     | 100UAH | 7kg  |
+
 +----+--------------+--------+------+
 
 
 mysql> SELECT * FROM transactions;
 
 +----+---------+---------------------+
+
 | id | cust_id | timedate            |
+
 +----+---------+---------------------+
+
 |  1 |       2 | 2021-11-24 12:27:34 |
+
 |  2 |       3 | 2021-11-24 12:37:34 |
+
 |  3 |       4 | 2021-11-24 12:38:34 |
+
 |  4 |       1 | 2021-11-24 12:39:34 |
+
 +----+---------+---------------------+
 
 
 mysql> SELECT * FROM product_transaction;
 
 +---------+----------+
+
 | prod_id | trans_id |
+
 +---------+----------+
+
 |       1 |        1 |
+
 |       2 |        1 |
+
 |       3 |        1 |
+
 |       3 |        2 |
+
 |       4 |        2 |
+
 |       5 |        2 |
+
 +---------+----------+
 
 
@@ -202,44 +269,68 @@ ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint f
 mysql> SELECT * FROM product_transaction WHERE trans_id =1;
 
 +---------+----------+
+
 | prod_id | trans_id |
+
 +---------+----------+
+
 |       1 |        1 |
+
 |       2 |        1 |
+
 |       3 |        1 |
+
 +---------+----------+
 
 
 mysql> SELECT * FROM product;
 
 +----+--------------+--------+------+
+
 | id | product_name | price  | qty  |
+
 +----+--------------+--------+------+
+
 |  1 | milk         | 27UAH  | 27L  |
+
 |  2 | meat         | 100UAH | 7kg  |
+
 |  3 | bread        | 19UAH  | 7    |
+
 |  4 | sausages     | 80UAH  | 12kg |
+
 |  5 | meat_pig     | 100UAH | 7kg  |
+
 +----+--------------+--------+------+
 
 
 mysql> SELECT product_name FROM product WHERE id =5;
 
 +--------------+
+
 | product_name |
+
 +--------------+
+
 | meat_pig     |
+
 +--------------+
 
 
 mysql> SELECT product_name FROM product WHERE id >2;
 
 +--------------+
+
 | product_name |
+
 +--------------+
+
 | bread        |
+
 | sausages     |
+
 | meat_pig     |
+
 +--------------+
 
 
@@ -247,47 +338,74 @@ mysql> SELECT id AS 'номер', product_name AS 'Продукт питания
 
 
 +------------+-------------------------------+
+
 | номер      | Продукт питания               |
+
 +------------+-------------------------------+
+
 |          3 | bread                         |
+
 |          4 | sausages                      |
+
 |          5 | meat_pig                      |
+
 +------------+-------------------------------+
 
 
 mysql> SELECT * FROM product ORDER BY product_name;
 
 +----+--------------+--------+------+
+
 | id | product_name | price  | qty  |
+
 +----+--------------+--------+------+
+
 |  3 | bread        | 19UAH  | 7    |
+
 |  2 | meat         | 100UAH | 7kg  |
+
 |  5 | meat_pig     | 100UAH | 7kg  |
+
 |  1 | milk         | 27UAH  | 27L  |
+
 |  4 | sausages     | 80UAH  | 12kg |
+
 +----+--------------+--------+------+
 
 
 mysql> SELECT * FROM product WHERE price LIKE "1%" AND qty LIKE "7%";
 
 +----+--------------+--------+-----+
+
 | id | product_name | price  | qty |
+
 +----+--------------+--------+-----+
+
 |  2 | meat         | 100UAH | 7kg |
+
 |  3 | bread        | 19UAH  | 7   |
+
 |  5 | meat_pig     | 100UAH | 7kg |
+
 +----+--------------+--------+-----+
 
 
 mysql> SELECT * FROM product WHERE price LIKE "1%" OR qty LIKE "%kg";
 
 +----+--------------+--------+------+
+
 | id | product_name | price  | qty  |
+
 +----+--------------+--------+------+
+
 |  2 | meat         | 100UAH | 7kg  |
+
 |  3 | bread        | 19UAH  | 7    |
+
 |  4 | sausages     | 80UAH  | 12kg |
+
 |  5 | meat_pig     | 100UAH | 7kg  |
+
 +----+--------------+--------+------+
 
 
@@ -303,13 +421,21 @@ mysql> select * from product;
 
 
 +----+--------------+--------+------+----------+
+
 | id | product_name | price  | qty  | age_days |
+
 +----+--------------+--------+------+----------+
+
 |  1 | milk         | 27UAH  | 27L  |       10 |
+
 |  2 | meat         | 100UAH | 7kg  |       20 |
+
 |  3 | bread        | 19UAH  | 7    |       30 |
+
 |  4 | sausages     | 80UAH  | 12kg |       40 |
+
 |  5 | meat_pig     | 100UAH | 7kg  |       50 |
+
 +----+--------------+--------+------+----------+
 
 
@@ -318,9 +444,13 @@ mysql> SELECT AVG(age_days) FROM product;
 
 
 +---------------+
+
 | AVG(age_days) |
+
 +---------------+
+
 |       30.0000 |
+
 +---------------+
 
 
@@ -328,9 +458,13 @@ mysql> SELECT MAX(age_days), MIN(age_days) FROM product;
 
 
 +---------------+---------------+
+
 | MAX(age_days) | MIN(age_days) |
+
 +---------------+---------------+
+
 |            50 |            10 |
+
 +---------------+---------------+
 
 
@@ -338,13 +472,21 @@ mysql> SELECT age_days, COUNT(age_days) FROM product GROUP BY age_days;
 
 
  +----------+-----------------+
+
 | age_days | COUNT(age_days) |
+
 +----------+-----------------+
+
 |       10 |               1 |
+
 |       20 |               2 |
+
 |       30 |               1 |
+
 |       40 |               1 |
+
 |       50 |               1 |
+
 +----------+-----------------+
 
 
@@ -365,15 +507,25 @@ mysql> select user from mysql.user;
 
 
 +------------------+
+
 | user             |
+
 +------------------+
+
 | debian-sys-maint |
+
 | mysql.infoschema |
+
 | mysql.session    |
+
 | mysql.sys        |
+
 | root             |
+
 | user1            |
+
 | user2            |
+
 +------------------+
 
 
@@ -383,14 +535,23 @@ Query OK, 1 row affected (0.06 sec)
 mysql> SHOW DATABASES;
 
 +--------------------+
+
 | Database           |
+
 +--------------------+
+
 | DevOpsOnline       |
+
 | information_schema |
+
 | mysql              |
+
 | performance_schema |
+
 | sys                |
+
 | test_priv          |
+
 +--------------------+
 
 
@@ -415,10 +576,15 @@ mysql> show grants for 'user1'@'localhost';
 
 
 +--------------------------------------------------------------+
+
 | Grants for user1@localhost                                   |
+
 +--------------------------------------------------------------+
+
 | GRANT USAGE ON *.* TO `user1`@`localhost`                    |
+
 | GRANT ALL PRIVILEGES ON `test_priv`.* TO `user1`@`localhost` |
+
 +--------------------------------------------------------------+
 
 
@@ -427,10 +593,15 @@ mysql> show grants for 'user2'@'localhost';
 
 
 +------------------------------------------------------+
+
 | Grants for user2@localhost                           |
+
 +------------------------------------------------------+
+
 | GRANT USAGE ON *.* TO `user2`@`localhost`            |
+
 | GRANT CREATE ON `test_priv`.* TO `user2`@`localhost` |
+
 +------------------------------------------------------+
 
 
@@ -469,10 +640,15 @@ mysql> show databases;
 
 
 +--------------------+
+
 | Database           |
+
 +--------------------+
+
 | information_schema |
+
 | test_priv          |
+
 +--------------------+
 
 
@@ -509,45 +685,85 @@ mysql> show tables;
 
 
 +------------------------------------------------------+
+
 | Tables_in_mysql                                      |
+
 +------------------------------------------------------+
+
 | columns_priv                                         |
+
 | component                                            |
+
 | db                                                   |
+
 | default_roles                                        |
+
 | engine_cost                                          |
+
 | func                                                 |
+
 | general_log                                          |
+
 | global_grants                                        |
+
 | gtid_executed                                        |
+
 | help_category                                        |
+
 | help_keyword                                         |
+
 | help_relation                                        |
+
 | help_topic                                           |
+
 | innodb_index_stats                                   |
+
 | innodb_table_stats                                   |
+
 | password_history                                     |
+
 | plugin                                               |
+
 | procs_priv                                           |
+
 | proxies_priv                                         |
+
 | replication_asynchronous_connection_failover         |
+
 | replication_asynchronous_connection_failover_managed |
+
 | replication_group_configuration_version              |
+
 | replication_group_member_actions                     |
+
 | role_edges                                           |
+
 | server_cost                                          |
+
 | servers                                              |
+
 | slave_master_info                                    |
+
 | slave_relay_log_info                                 |
+
 | slave_worker_info                                    |
+
 | slow_log                                             |
+
 | tables_priv                                          |
+
 | time_zone                                            |
+
 | time_zone_leap_second                                |
+
 | time_zone_name                                       |
+
 | time_zone_transition                                 |
+
 | time_zone_transition_type                            |
+
 | user                                                 |
+
 +------------------------------------------------------+
 
 
@@ -556,14 +772,23 @@ mysql> select * from server_cost;
 
 
 +------------------------------+------------+---------------------+---------+---------------+
+
 | cost_name                    | cost_value | last_update         | comment | default_value |
+
 +------------------------------+------------+---------------------+---------+---------------+
+
 | disk_temptable_create_cost   |       NULL | 2021-11-23 09:26:08 | NULL    |            20 |
+
 | disk_temptable_row_cost      |       NULL | 2021-11-23 09:26:08 | NULL    |           0.5 |
+
 | key_compare_cost             |       NULL | 2021-11-23 09:26:08 | NULL    |          0.05 |
+
 | memory_temptable_create_cost |       NULL | 2021-11-23 09:26:08 | NULL    |             1 |
+
 | memory_temptable_row_cost    |       NULL | 2021-11-23 09:26:08 | NULL    |           0.1 |
+
 | row_evaluate_cost            |       NULL | 2021-11-23 09:26:08 | NULL    |           0.1 |
+
 +------------------------------+------------+---------------------+---------+---------------+
 
 
@@ -571,15 +796,25 @@ mysql> select host, user, show_db_priv from user;
 
 
 +-----------+------------------+--------------+
+
 | host      | user             | show_db_priv |
+
 +-----------+------------------+--------------+
+
 | localhost | debian-sys-maint | Y            |
+
 | localhost | mysql.infoschema | N            |
+
 | localhost | mysql.session    | N            |
+
 | localhost | mysql.sys        | N            |
+
 | localhost | root             | Y            |
+
 | localhost | user1            | N            |
+
 | localhost | user2            | N            |
+
 +-----------+------------------+--------------+
 
 
@@ -605,14 +840,23 @@ mysql> select * from product_transaction;
 
 
 +---------+----------+
+
 | prod_id | trans_id |
+
 +---------+----------+
+
 |       1 |        1 |
+
 |       2 |        1 |
+
 |       3 |        1 |
+
 |       3 |        2 |
+
 |       4 |        2 |
+
 |       5 |        2 |
+
 +---------+----------+
 
 
@@ -624,13 +868,21 @@ mysql> select * from product_transaction;
 
 
 +---------+----------+
+
 | prod_id | trans_id |
+
 +---------+----------+
+
 |       2 |        1 |
+
 |       3 |        1 |
+
 |       3 |        2 |
+
 |       4 |        2 |
+
 |       5 |        2 |
+
 +---------+----------+
 
 
@@ -660,14 +912,23 @@ mysql> select * from product_transaction;
 
 
 +---------+----------+
+
 | prod_id | trans_id |
+
 +---------+----------+
+
 |       1 |        1 |
+
 |       2 |        1 |
+
 |       3 |        1 |
+
 |       3 |        2 |
+
 |       4 |        2 |
+
 |       5 |        2 |
+
 +---------+----------+
 
 
@@ -706,13 +967,21 @@ mysql> show databases;
 
 
 +--------------------+
+
 | Database           |
+
 +--------------------+
+
 | DevOpsLocal        |
+
 | information_schema |
+
 | mysql              |
+
 | performance_schema |
+
 | sys                |
+
 +--------------------+
 
 
@@ -755,12 +1024,19 @@ mysql> show tables;
 
 
 +-----------------------+
+
 | Tables_in_DevOpsLocal |
+
 +-----------------------+
+
 | customer              |
+
 | product               |
+
 | product_transaction   |
+
 | transactions          |
+
 +-----------------------+
 
 
@@ -769,26 +1045,42 @@ Let's try SELECT from the tables:
 mysql> select * from customer;
 
 +----+------------+
+
 | id | postalCode |
+
 +----+------------+
+
 |  1 | 14000      |
+
 |  2 | 14001      |
+
 |  3 | 14002      |
+
 |  4 | 14003      |
+
 +----+------------+
 
 
 mysql> select * from product;
 
 +----+--------------+--------+------+----------+
+
 | id | product_name | price  | qty  | age_days |
+
 +----+--------------+--------+------+----------+
+
 |  1 | milk         | 27UAH  | 27L  |       10 |
+
 |  2 | meat         | 100UAH | 7kg  |       20 |
+
 |  3 | bread        | 19UAH  | 7    |       30 |
+
 |  4 | sausages     | 80UAH  | 12kg |       40 |
+
 |  5 | meat_pig     | 100UAH | 7kg  |       50 |
+
 |  6 | meat_cow     | 120UAH | 7kg  |       20 |
+
 +----+--------------+--------+------+----------+
 
 
@@ -796,11 +1088,17 @@ mysql> select * from product where age_days > 20;
 
 
 +----+--------------+--------+------+----------+
+
 | id | product_name | price  | qty  | age_days |
+
 +----+--------------+--------+------+----------+
+
 |  3 | bread        | 19UAH  | 7    |       30 |
+
 |  4 | sausages     | 80UAH  | 12kg |       40 |
+
 |  5 | meat_pig     | 100UAH | 7kg  |       50 |
+
 +----+--------------+--------+------+----------+
 
 
@@ -815,13 +1113,21 @@ Query OK, 0 rows affected (0.24 sec)
 mysql> show tables;
 
 +-----------------------+
+
 | Tables_in_DevOpsLocal |
+
 +-----------------------+
+
 | customer              |
+
 | product               |
+
 | product_transaction   |
+
 | testRDS               |
+
 | transactions          |
+
 +-----------------------+
 
 
@@ -853,13 +1159,21 @@ ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that 
 mysql> show tables;
 
 +--------------------------+
+
 | Tables_in_DevOpsLocalRDS |
+
 +--------------------------+
+
 | customer                 |
+
 | product                  |
+
 | product_transaction      |
+
 | testRDS                  |
+
 | transactions             |
+
 +--------------------------+
 
 DUMP is DONE and CHACKED.
