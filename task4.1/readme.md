@@ -8,6 +8,7 @@ task4.1$ sudo apt update
 
 $ sudo apt install mysql-server
 $ sudo mysql -v
+
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 10
 Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
@@ -39,7 +40,7 @@ I decided chose "one-to-one" point.
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6bc50eb3fead23a5ed6b4d5c2a1043e72b706f3b/task4.1/images/scheme_db.jpg" width="300">
 
 So, let's create DBs in MySql:
-
+  ######### DDL #####
 mysql> CREATE DATABASE DevOpsOnline;
 --------------
 CREATE DATABASE DevOpsOnline
@@ -47,12 +48,6 @@ CREATE DATABASE DevOpsOnline
 
 Query OK, 1 row affected (0.34 sec)
 
-mysql> show tables;
---------------
-show tables
---------------
-
-ERROR 1046 (3D000): No database selected
 mysql> USE DevOpsOnline;
 Database changed
 mysql> show tables;
@@ -62,8 +57,6 @@ show tables
 
 Empty set (0.00 sec)
 
-mysql>USE DevOpsOnline;
- 
 mysql>CREATE TABLE customer (id INT AUTO_INCREMENT PRIMARY KEY, postalCode VARCHAR(15) default NULL);
  
 mysql>CREATE TABLE product (id INT AUTO_INCREMENT PRIMARY KEY, product_name VARCHAR(50) NOT NULL, price VARCHAR(7) NOT NULL, qty VARCHAR(4) NOT NULL);
@@ -182,12 +175,13 @@ mysql> SELECT * FROM product_transaction;
 +---------+----------+
 6 rows in set (0.00 sec)
 
+ ################ incorrect INSERT ##############
 mysql> INSERT INTO product_transaction (prod_id, trans_id) VALUES (6, 2);
 ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`DevOpsOnline`.`product_transaction`, CONSTRAINT `product_transaction_ibfk_1` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`))
 mysql>
 
 
-########SELECT##########
+########SELECT (DML) ##########
 
 mysql> SELECT * FROM product_transaction WHERE trans_id =1;
 +---------+----------+
@@ -269,6 +263,8 @@ mysql> SELECT * FROM product WHERE price LIKE "1%" OR qty LIKE "%kg";
 |  5 | meat_pig     | 100UAH | 7kg  |
 +----+--------------+--------+------+
 4 rows in set (0.00 sec)
+ ################ DDL ############33
+
 mysql> ALTER TABLE product CHANGE age age_days INT;
 Query OK, 0 rows affected (0.39 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -298,7 +294,8 @@ mysql> SELECT MAX(age_days), MIN(age_days) FROM product;
 |            50 |            10 |
 +---------------+---------------+
 1 row in set (0.00 sec)
-mysql> SELECT age_days, COUNT(age_days) FROM product GROUP BY age_days;         +----------+-----------------+
+mysql> SELECT age_days, COUNT(age_days) FROM product GROUP BY age_days;        
+ +----------+-----------------+
 | age_days | COUNT(age_days) |
 +----------+-----------------+
 |       10 |               1 |
@@ -308,3 +305,483 @@ mysql> SELECT age_days, COUNT(age_days) FROM product GROUP BY age_days;         
 |       50 |               1 |
 +----------+-----------------+
 5 rows in set (0.00 sec)
+
+####### users and privileges #############
+
+Let's create two users and database for test privileges in MySql:
+
+
+mysql> Create user 'user1'@'localhost' identified by 'user1';
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> create user 'user2'@'localhost' identified by 'user2';
+Query OK, 0 rows affected (1.03 sec)
+
+
+mysql> select user from mysql.user;
++------------------+
+| user             |
++------------------+
+| debian-sys-maint |
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| root             |
+| user1            |
+| user2            |
++------------------+
+7 rows in set (0.31 sec)
+
+mysql> CREATE DATABASE test_priv;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| DevOpsOnline       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test_priv          |
++--------------------+
+6 rows in set (0.07 sec)
+
+Attached "all privileges" to user1:
+
+mysql> Grant all privileges on test_priv.* TO 'user1'@'localhost';
+Query OK, 0 rows affected (0.65 sec)
+
+Attached "Create" privileges to user2 for test_priv DB. It can creates tables.
+
+mysql> Grant create on test_priv.* TO 'user2'@'localhost';
+Query OK, 0 rows affected (0.30 sec)
+
+Check grants for both users:
+
+mysql> show grants for 'user1'@'localhost';
++--------------------------------------------------------------+
+| Grants for user1@localhost                                   |
++--------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `user1`@`localhost`                    |
+| GRANT ALL PRIVILEGES ON `test_priv`.* TO `user1`@`localhost` |
++--------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> show grants for 'user2'@'localhost';
++------------------------------------------------------+
+| Grants for user2@localhost                           |
++------------------------------------------------------+
+| GRANT USAGE ON *.* TO `user2`@`localhost`            |
+| GRANT CREATE ON `test_priv`.* TO `user2`@`localhost` |
++------------------------------------------------------+
+2 rows in set (0.01 sec)
+
+Let's login with user1 and check privileges of them:
+
+
+root@devopsonline:/home/mrbit# mysql -u user1 -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use test_priv;
+Database changed
+
+mysql> create table table1 (id INT auto_increment PRIMARY KEY, column1 VARCHAR(15));
+Query OK, 0 rows affected (0.48 sec)
+
+Repeate the same for USER2:
+
+
+root@devopsonline:/home/mrbit# mysql -u user2 -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| test_priv          |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> use test_priv;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table table2 (id INT auto_increment PRIMARY KEY, column1 VARCHAR(15));
+Query OK, 0 rows affected (0.54 sec)
+
+mysql> drop table table2;
+ERROR 1142 (42000): DROP command denied to user 'user2'@'localhost' for table 'table2'
+mysql>
+
+
+GRANTS ARE  WORKING!
+
+Let's look to DB mysql:
+
+mysql> use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------------------------------------------+
+| Tables_in_mysql                                      |
++------------------------------------------------------+
+| columns_priv                                         |
+| component                                            |
+| db                                                   |
+| default_roles                                        |
+| engine_cost                                          |
+| func                                                 |
+| general_log                                          |
+| global_grants                                        |
+| gtid_executed                                        |
+| help_category                                        |
+| help_keyword                                         |
+| help_relation                                        |
+| help_topic                                           |
+| innodb_index_stats                                   |
+| innodb_table_stats                                   |
+| password_history                                     |
+| plugin                                               |
+| procs_priv                                           |
+| proxies_priv                                         |
+| replication_asynchronous_connection_failover         |
+| replication_asynchronous_connection_failover_managed |
+| replication_group_configuration_version              |
+| replication_group_member_actions                     |
+| role_edges                                           |
+| server_cost                                          |
+| servers                                              |
+| slave_master_info                                    |
+| slave_relay_log_info                                 |
+| slave_worker_info                                    |
+| slow_log                                             |
+| tables_priv                                          |
+| time_zone                                            |
+| time_zone_leap_second                                |
+| time_zone_name                                       |
+| time_zone_transition                                 |
+| time_zone_transition_type                            |
+| user                                                 |
++------------------------------------------------------+
+37 rows in set (0.01 sec)
+
+
+mysql> select * from server_cost;
++------------------------------+------------+---------------------+---------+---------------+
+| cost_name                    | cost_value | last_update         | comment | default_value |
++------------------------------+------------+---------------------+---------+---------------+
+| disk_temptable_create_cost   |       NULL | 2021-11-23 09:26:08 | NULL    |            20 |
+| disk_temptable_row_cost      |       NULL | 2021-11-23 09:26:08 | NULL    |           0.5 |
+| key_compare_cost             |       NULL | 2021-11-23 09:26:08 | NULL    |          0.05 |
+| memory_temptable_create_cost |       NULL | 2021-11-23 09:26:08 | NULL    |             1 |
+| memory_temptable_row_cost    |       NULL | 2021-11-23 09:26:08 | NULL    |           0.1 |
+| row_evaluate_cost            |       NULL | 2021-11-23 09:26:08 | NULL    |           0.1 |
++------------------------------+------------+---------------------+---------+---------------+
+6 rows in set (0.00 sec)
+
+mysql> select host, user, show_db_priv from user;
++-----------+------------------+--------------+
+| host      | user             | show_db_priv |
++-----------+------------------+--------------+
+| localhost | debian-sys-maint | Y            |
+| localhost | mysql.infoschema | N            |
+| localhost | mysql.session    | N            |
+| localhost | mysql.sys        | N            |
+| localhost | root             | Y            |
+| localhost | user1            | N            |
+| localhost | user2            | N            |
++-----------+------------------+--------------+
+7 rows in set (0.00 sec)
+
+
+################## PART 2 ####################
+
+Backup of db:
+
+root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# mysqldump -u root DevOpsOnline > task4.1/DevOpsOnline.sql
+
+root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# mysql -u user1 -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
+
+
+mysql> select * from product_transaction;
++---------+----------+
+| prod_id | trans_id |
++---------+----------+
+|       1 |        1 |
+|       2 |        1 |
+|       3 |        1 |
+|       3 |        2 |
+|       4 |        2 |
+|       5 |        2 |
++---------+----------+
+6 rows in set (0.00 sec)
+
+mysql> delete from product_transaction where prod_id = 1;
+Query OK, 1 row affected (0.37 sec)
+
+mysql> select * from product_transaction;
++---------+----------+
+| prod_id | trans_id |
++---------+----------+
+|       2 |        1 |
+|       3 |        1 |
+|       3 |        2 |
+|       4 |        2 |
+|       5 |        2 |
++---------+----------+
+5 rows in set (0.00 sec)
+
+Restore of DB:
+
+root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4/task4.1# mysql -u root DevOpsOnline < DevOpsOnline.sql
+root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4/task4.1# mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 37
+Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use DevOpsOnline;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select * from product_transaction;
++---------+----------+
+| prod_id | trans_id |
++---------+----------+
+|       1 |        1 |
+|       2 |        1 |
+|       3 |        1 |
+|       3 |        2 |
+|       4 |        2 |
+|       5 |        2 |
++---------+----------+
+6 rows in set (0.00 sec)
+
+Let's export our DB to RDS AWS.
+
+First of oll should create RDS AWS public database and add rule for access from local host:
+
+img
+img
+img
+
+Try to connect:
+
+mysql -u root -h devopsonlinelocal.cpriyhidtmjl.us-east-2.rds.amazonaws.com -p;
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 27
+Server version: 8.0.23 Source distribution
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database DevOpsLocal;
+Query OK, 1 row affected (0.26 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| DevOpsLocal        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.20 sec)
+
+mysql> use DevOpsLocal;
+Database changed
+mysql> show tables;
+Empty set (0.20 sec)
+mysql> quit;
+
+Restore local DB to RDS AWS MySQL:
+
+>mysql -u root -h devopsonlinelocal.cpriyhidtmjl.us-east-2.rds.amazonaws.com -p DevOpsLocal < DevOpsOnline.sql;
+Enter password:
+
+connect and check result:
+
+root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4/task4.1# mysql -u root -h devopsonlinelocal.cpriyhidtmjl.us-east-2.rds.amazonaws.com -p;
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 33
+Server version: 8.0.23 Source distribution
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use DevOpsLocal;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-----------------------+
+| Tables_in_DevOpsLocal |
++-----------------------+
+| customer              |
+| product               |
+| product_transaction   |
+| transactions          |
++-----------------------+
+4 rows in set (0.18 sec)
+
+Let's try SELECT from the tables:
+
+mysql> select * from customer;
++----+------------+
+| id | postalCode |
++----+------------+
+|  1 | 14000      |
+|  2 | 14001      |
+|  3 | 14002      |
+|  4 | 14003      |
++----+------------+
+4 rows in set (0.25 sec)
+
+mysql> select * from product;
++----+--------------+--------+------+----------+
+| id | product_name | price  | qty  | age_days |
++----+--------------+--------+------+----------+
+|  1 | milk         | 27UAH  | 27L  |       10 |
+|  2 | meat         | 100UAH | 7kg  |       20 |
+|  3 | bread        | 19UAH  | 7    |       30 |
+|  4 | sausages     | 80UAH  | 12kg |       40 |
+|  5 | meat_pig     | 100UAH | 7kg  |       50 |
+|  6 | meat_cow     | 120UAH | 7kg  |       20 |
++----+--------------+--------+------+----------+
+6 rows in set (0.21 sec)
+
+mysql> select * from product where age_days > 20;
++----+--------------+--------+------+----------+
+| id | product_name | price  | qty  | age_days |
++----+--------------+--------+------+----------+
+|  3 | bread        | 19UAH  | 7    |       30 |
+|  4 | sausages     | 80UAH  | 12kg |       40 |
+|  5 | meat_pig     | 100UAH | 7kg  |       50 |
++----+--------------+--------+------+----------+
+3 rows in set (0.23 sec)
+
+ALL DONE!
+
+Now let's try create the dump file of the RDS DB to the local host: 
+
+mysql> create table testRDS (id INT PRIMARY KEY, second_column INT);
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_DevOpsLocal |
++-----------------------+
+| customer              |
+| product               |
+| product_transaction   |
+| testRDS               |
+| transactions          |
++-----------------------+
+5 rows in set (0.18 sec)
+
+mysqldump -u root -h devopsonlinelocal.cpriyhidtmjl.us-east-2.rds.amazonaws.com -p DevOpsLocal > DevOpsLocalRDS.sql;
+Enter password:
+Warning: A partial dump from a server that has GTIDs will by default include the GTIDs of all transactions, even those that changed suppressed parts of the database. If you don't want to restore GTIDs, pass --set-gtid-purged=OFF. To make a complete dump, pass --all-databases --triggers --routines --events.
+
+root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4/task4.1# ls
+DevOpsLocalRDS.sql  DevOpsOnline2sql  DevOpsOnline.sql  images  readme.md  test_priv.sql
+
+root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4/task4.1# mysql -u root DevOpsLocalRDS < DevOpsLocalRDS.sql
+root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4/task4.1# mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 53
+Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use DevOpsLocalRDS;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+mysql> show lables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'lables' at line 1
+mysql> show tables;
++--------------------------+
+| Tables_in_DevOpsLocalRDS |
++--------------------------+
+| customer                 |
+| product                  |
+| product_transaction      |
+| testRDS                  |
+| transactions             |
++--------------------------+
+5 rows in set (0.00 sec)
+
+DUMP is DONE and CHACKED.
+
+################# PART 3 #######################
+
+
+
+
+
+
+
