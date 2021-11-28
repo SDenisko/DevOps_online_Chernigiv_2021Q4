@@ -1206,12 +1206,20 @@ aws dynamodb create-table --cli-input-json <path to json file>
 
 But, i decided use web page. Results:
 
-<img src="" width="300" >
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb1.JPG" width="300" >
 
-<img src="" width="300" >
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb2.JPG" width="300" >
 
-<img src="" width="300" >
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb_table.JPG" width="300" >
 
-<img src="" width="300" >
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb_items.JPG" width="300" >
 
-<img src="" width="300" >
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb_query1.JPG" width="300" >
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb_query2.JPG" width="300" >
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb_query3.JPG" width="300" >
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb_scan1.JPG" width="300" >
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8eccd55c396acb91a50afd6e09c163774ef7ac61/task4.1/images/dynamodb_scan2.JPG" width="300" >
