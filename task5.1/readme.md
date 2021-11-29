@@ -53,7 +53,7 @@ lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
 mysql:x:113:117:MySQL Server,,,:/nonexistent:/bin/false
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/5e6c325e30c3360e1ee70377470675bf8b14bf75/task5.1/images/list-users.png" width="300">
 
 
 root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# cat /etc/group
@@ -104,7 +104,7 @@ mrbit:x:1000:
 mysql:x:117:
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/5e6c325e30c3360e1ee70377470675bf8b14bf75/task5.1/images/list-groups.jpg" width="300">
 
 
 
@@ -129,6 +129,7 @@ Enter the new value, or press ENTER for the default
         Work Phone []: 1234567
         Home Phone []: 7654321
         Other []: I live in Chernigiv
+
 root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# finger mrbit
 Login: mrbit                            Name: mister
 Directory: /home/mrbit                  Shell: /bin/bash
