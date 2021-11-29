@@ -280,4 +280,4 @@ In this task i should use some commands:
 
 2. Command "file" — determine file type.
 
-<img src = "https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/d94af0baa2caa0ad587e4081c716dabb8c89dd28/task5.1/images/file.JPG" width = "400"> 
+<img src = "https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/d94af0baa2caa0ad587e4081c716dabb8c89dd28/task5.1/images/file.JPG" width = "300"> 
