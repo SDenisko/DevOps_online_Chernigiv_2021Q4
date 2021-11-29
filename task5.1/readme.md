@@ -275,9 +275,9 @@ In this task i should use some commands:
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/tree.JPG" width ="300">
 
-<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/tree_root.JPG" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6fc2c21049ab8bc5eddbc825339773abe96d4c0c/task5.1/images/tree_root.JPG" width ="300">
 
---
+-h
 
 root@devopsonline:/home/mrbit# tree -L 2 /root -d
 /root
@@ -285,5 +285,5 @@ root@devopsonline:/home/mrbit# tree -L 2 /root -d
 └── snap
     └── lxd
 
---
+-h
  
