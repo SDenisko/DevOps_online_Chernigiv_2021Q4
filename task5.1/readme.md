@@ -17,7 +17,6 @@ passwd: password updated successfully
 /etc/group containe list of user groups.
 
 
--
 
 root:x:0:0:root:/root:/bin/bash
 
@@ -43,7 +42,7 @@ lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
 
 mysql:x:113:117:MySQL Server,,,:/nonexistent:/bin/false
 
--
+
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/5e6c325e30c3360e1ee70377470675bf8b14bf75/task5.1/images/list-users.png" width="300">
 
@@ -124,6 +123,9 @@ Where,
 
 root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# chfn mrbit
 
+-
+
+
 Changing the user information for mrbit
 
 Enter the new value, or press ENTER for the default
@@ -137,6 +139,8 @@ Enter the new value, or press ENTER for the default
         Home Phone []: 7654321
 
         Other []: I live in Chernigiv
+-
+
 
 
 root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# finger mrbit
@@ -144,21 +148,13 @@ root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# finger mrbit
 -
 
 Login: mrbit                            Name: mister
-
 Directory: /home/mrbit                  Shell: /bin/bash
-
 Office: 1, 123-4567                     Home Phone: 765-4321
-
 On since Mon Nov 29 09:15 (UTC) on pts/0 from 10.0.2.2
-
    1 second idle
-
 On since Mon Nov 29 09:17 (UTC) on pts/1 from 10.0.2.2
-
    6 minutes 57 seconds idle
-
 No mail.
-
 No Plan.
 
 -
