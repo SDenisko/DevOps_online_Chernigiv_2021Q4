@@ -123,8 +123,6 @@ Where,
 
 root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# chfn mrbit
 
--
-
 
 Changing the user information for mrbit
 
@@ -139,25 +137,30 @@ Enter the new value, or press ENTER for the default
         Home Phone []: 7654321
 
         Other []: I live in Chernigiv
--
-
 
 
 root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# finger mrbit
 
--
+
 
 Login: mrbit                            Name: mister
+
 Directory: /home/mrbit                  Shell: /bin/bash
+
 Office: 1, 123-4567                     Home Phone: 765-4321
+
 On since Mon Nov 29 09:15 (UTC) on pts/0 from 10.0.2.2
+
    1 second idle
+
 On since Mon Nov 29 09:17 (UTC) on pts/1 from 10.0.2.2
+
    6 minutes 57 seconds idle
+
 No mail.
+
 No Plan.
 
--
 
 4. For get more information about any command can use "man" command. 
 
@@ -272,6 +275,15 @@ In this task i should use some commands:
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/tree.JPG" width ="300">
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/tree_root.JPG" width ="300">
 
+--
+
+root@devopsonline:/home/mrbit# tree -L 2 /root -d
+/root
+├── DevOps_online_Chernigiv_2021Q4
+└── snap
+    └── lxd
+
+--
  
