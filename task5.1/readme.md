@@ -277,13 +277,7 @@ In this task i should use some commands:
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6fc2c21049ab8bc5eddbc825339773abe96d4c0c/task5.1/images/tree_root.JPG" width ="300">
 
--h
 
-root@devopsonline:/home/mrbit# tree -L 2 /root -d
-/root
-├── DevOps_online_Chernigiv_2021Q4
-└── snap
-    └── lxd
+2. Command file — determine file type.
 
--h
- 
+<img src = "" width = "300"> 
