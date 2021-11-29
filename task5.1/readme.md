@@ -138,6 +138,8 @@ Enter the new value, or press ENTER for the default
 
 root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# finger mrbit
 
+-
+
 Login: mrbit                            Name: mister
 
 Directory: /home/mrbit                  Shell: /bin/bash
@@ -156,12 +158,13 @@ No mail.
 
 No Plan.
 
+-
 
 4. For get more information about any command can use "man" command. 
 
 
 Example of "man" command for "ls":
-
+--
 man ls
  
 NAME
@@ -227,37 +230,37 @@ NAME
 
        -i, --inode
 
-
+--
 5. Command "less" uses for read a big text files: 
 
 For example:
 
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/less.JPG" width="300">
 
 
 
  Command "more" - file perusal filter for crt viewing. 
 
 
-<img src = "" width="300">
+<img src = "https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/man_more.JPG" width="300">
 
 
 For example:
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/more.JPG" width="300">
 
 
-6. For read information about "finger" command i use man command
+6. For read information about "finger" command i used man command
 
 
 
 Very usefull "ls" command - list directory contents. 
 Example of use it for home directory:
  
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/ls-ahl.JPG" width ="300">
 
 Command "ls" helps me list of content of any folders. There are a lot of keyes, for example some of them:  -a, --all - do not ignore entries starting with; -h, --human-readable - with -l and -s, print sizes like 1K 234M 2G etc; -i, --inode - print the index number of each file; -l - use a long listing format. This is very usefull command.
 
@@ -268,7 +271,7 @@ In this task i should use some commands:
 
 1. "tree"
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ec058d7d19c4c114172b228ea8c84b92df847d03/task5.1/images/tree.JPG" width ="300">
 
 <img src="" width ="300">
 
