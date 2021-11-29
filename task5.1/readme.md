@@ -16,7 +16,7 @@ passwd: password updated successfully
 
 /etc/group containe list of user groups.
 
-
+-
 root:x:0:0:root:/root:/bin/bash
 
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -40,7 +40,7 @@ mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
 lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
 
 mysql:x:113:117:MySQL Server,,,:/nonexistent:/bin/false
-
+-
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/5e6c325e30c3360e1ee70377470675bf8b14bf75/task5.1/images/list-users.png" width="300">
 
