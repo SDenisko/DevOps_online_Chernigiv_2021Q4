@@ -281,3 +281,39 @@ In this task i should use some commands:
 2. Command "file" — determine file type.
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/d94af0baa2caa0ad587e4081c716dabb8c89dd28/task5.1/images/file.JPG" width = "400"> 
+
+
+3. To navigate the file system in CLI uses "cd" command. It has some parameters, one of them: symbol  "~" moves to home directory; ".." moves level down. For example:
+
+
+
+<img src:"" width = "300">
+
+
+4. To list content of folder uses command "ls". It has a lot of keyes, some of them:
+ -a (--all) -  do not ignore entries starting with ".";
+ -i ( --inode) - print the index number of each file;
+ -l  -  use a long listing format (permissions, number of linked hard-links, owner of the file, to which group this file belongs to, size, modification/creation date and time, file/directory name).
+
+5. For make this task i used some commands: mkdir - create directory, ls - look to point 4, cp - copy failes or directories, rm -r - remove directory with files. 
+
+
+<img src="" width = "300">
+
+
+<img src="" width = "300">
+
+
+6. Hard and symdolik links are very usefull thinghs. Hard and symdolik links are very usefull thinghs.
+For create hard link uses "ln" command, for symbolik link uses "ln -s" command. 
+A symbolic or soft link is an actual link to the original file, whereas a hard link is a mirror copy of the original file but with different inode number and file permissions than original file
+
+Example:
+
+<img src="" width = "300">
+<img src="" width = "300">
+
+After deleted origin labwork2 file the symlink has broken, because it works with path of file. But hard link was working, because it works with information in file.
+
+
+7. "Locate" utility - list files in databases that match a pattern
