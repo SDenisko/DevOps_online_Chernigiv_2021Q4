@@ -319,7 +319,7 @@ After deleted origin labwork2 file the symlink has broken, because it works with
 7. "Locate" utility - list files in databases that match a pattern. Before search some file with "locate" utility, should use "updatedb" command.
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/locate.JPG" width = "300">
-<img src="" width = "300">
+
 
 8. To check which partitions are mounted in system we can use "df" command. If need check all mounted devices uses "mount" command without any key. 
 
@@ -327,26 +327,26 @@ After deleted origin labwork2 file the symlink has broken, because it works with
 
 9. Let's count lines in any file:
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6e07f16bde83aae6eb5d0f221ca1650ee98035ff/task5.1/images/count1.JPG" width = "300">
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6e07f16bde83aae6eb5d0f221ca1650ee98035ff/task5.1/images/count2.JPG" width = "300">
 
 10. Let's try use "find" command. As example find all files, which containe "host" in /etc folder:
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6e07f16bde83aae6eb5d0f221ca1650ee98035ff/task5.1/images/find.JPG" width = "300">
 
 11. "grep" command. 
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6e07f16bde83aae6eb5d0f221ca1650ee98035ff/task5.1/images/grep.JPG" width = "300">
 
 12. If some directory containe a lot of folders and files we can use screen-by-screen listing of them for visualisation. In this case uses "less" command:
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6e07f16bde83aae6eb5d0f221ca1650ee98035ff/task5.1/images/sbs.JPG" width = "300">
 
 13. In unix/linux OS is one fundamental principle - all is a file. All devices are in /dev folder. 
 Let's look to it with "ls -alh" command. First symbol in every line shows type of device (c - character, b - block, p - pipe, s - socket):
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6e07f16bde83aae6eb5d0f221ca1650ee98035ff/task5.1/images/type_dev.JPG" width = "300">
 
 14. In Linux there are basically three types of files Ordinary/Regular files, Special files, Directories.
 
@@ -415,7 +415,7 @@ drwxr-xr-x   2  root  root          340  Dec   1  10:04  block
 15. To limit the number of files that the "ls" command outputs, uses "tail -n <number>" or "head -n <number>"  command. 
 For Example:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6e07f16bde83aae6eb5d0f221ca1650ee98035ff/task5.1/images/tail_head.JPG" width="300">
 
 
 
