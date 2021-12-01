@@ -320,3 +320,103 @@ After deleted origin labwork2 file the symlink has broken, because it works with
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/locate.JPG" width = "300">
 <img src="" width = "300">
+
+8. To check which partitions are mounted in system we can use "df" command. If need check all mounted devices uses "mount" command without any key. 
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/df.JPG" width = "300">
+
+9. Let's count lines in any file:
+
+<img src="" width = "300">
+
+<img src="" width = "300">
+
+10. Let's try use "find" command. As example find all files, which containe "host" in /etc folder:
+
+<img src="" width = "300">
+
+11. "grep" command. 
+
+<img src="" width = "300">
+
+12. If some directory containe a lot of folders and files we can use screen-by-screen listing of them for visualisation. In this case uses "less" command:
+
+<img src="" width = "300">
+
+13. In unix/linux OS is one fundamental principle - all is a file. All devices are in /dev folder. 
+Let's look to it with "ls -alh" command. First symbol in every line shows type of device (c - character, b - block, p - pipe, s - socket):
+
+<img src="" width = "300">
+
+14. In Linux there are basically three types of files Ordinary/Regular files, Special files, Directories.
+
+Ordinary/regular files containe text, data or program instructions: 
+
+- Readable file.s
+- Binary files.
+- Image files.
+- Compressed files.  
+
+Special files include the following:
+
+- Block files : These are device files that provide buffered access to system hardware components.
+- Character files : These are also device files that provide unbuffered serial access to system hardware components.
+- Symbolic link files.
+- Pipes or Named pipes : These are files that allow inter-process communication by connecting the output of one process to the input of another.
+- Socket files : These are files that provide a means of inter-process communication, but they can transfer data and information between process running on different environments.
+
+Directories: These are special files that store both ordinary and other special files and they are organized on the Linux file system in a hierarchy.
+
+For detect type of any file we can use some commands: "file" command or "ls -l" command. For filtering we can use "grep" command (grep ^d, grep ^l, grep ^s, grep ^p, grep ^c, grep ^dgrep ^b, grep ^-).
+
+"d" - directory.
+"l" - link.
+"s" - socket.
+"p" - pipe.
+"c" - character.
+"b" - block.
+"-" - normal file.
+
+Example:
+
+root@devopsonline:/etc# ls -ahl /dev
+
+drwxr-xr-x  3 root root          60 Dec  1 10:03 bus
+
+lrwxrwxrwx  1 root root           3 Dec  1 10:03 cdrom -> sr0
+
+drwxr-xr-x  2 root root        3.6K Dec  1 10:39 char
+
+crw--w----  1 root tty       5,   1 Dec  1 10:05 console
+
+lrwxrwxrwx  1 root root          11 Dec  1 10:03 core -> /proc/kcore
+
+drwxr-xr-x  3 root root          60 Dec  1 10:03 cpu
+
+crw-------  1 root root     10,  59 Dec  1 10:03 cpu_dma_latency
+
+crw-------  1 root root     10, 203 Dec  1 10:03 cuse
+
+drwxr-xr-x  8 root root         160 Dec  1 10:03 disk
+
+brw-rw----  1 root disk    253,   0 Dec  1 10:03 dm-0
+
+drwxr-xr-x  3 root root         100 Dec  1 10:03 dri
+
+root@devopsonline:/etc# ls -ahl /dev | grep ^d
+
+drwxr-xr-x  20  root  root         4.1K  Dec   1  10:04 .
+
+drwxr-xr-x  20  root  root         4.0K  Nov   2  16:31  ..
+
+drwxr-xr-x   2  root  root          340  Dec   1  10:04  block
+
+
+15. To limit the number of files that the "ls" command outputs, uses "tail -n <number>" or "head -n <number>"  command. 
+For Example:
+
+<img src="" width="300">
+
+
+
+
