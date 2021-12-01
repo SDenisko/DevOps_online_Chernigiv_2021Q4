@@ -323,7 +323,7 @@ After deleted origin labwork2 file the symlink has broken, because it works with
 
 8. To check which partitions are mounted in system we can use "df" command. If need check all mounted devices uses "mount" command without any key. 
 
-<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/df.JPG" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/aa31082caad7c8a37b81b8a3b4d2f31b0bdfc223/task5.1/images/df.JPG" width = "300">
 
 9. Let's count lines in any file:
 
