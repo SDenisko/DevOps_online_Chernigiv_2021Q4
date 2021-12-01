@@ -316,4 +316,7 @@ Example:
 After deleted origin labwork2 file the symlink has broken, because it works with path of file. But hard link was working, because it works with information in file.
 
 
-7. "Locate" utility - list files in databases that match a pattern
+7. "Locate" utility - list files in databases that match a pattern. Before search some file with "locate" utility, should use "updatedb" command.
+
+<img src="" width = "300">
+<img src="" width = "300">
