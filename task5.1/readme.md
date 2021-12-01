@@ -287,7 +287,7 @@ In this task i should use some commands:
 
 
 
-<img src:"" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/cd_example.JPG" width = "300">
 
 
 4. To list content of folder uses command "ls". It has a lot of keyes, some of them:
@@ -298,10 +298,10 @@ In this task i should use some commands:
 5. For make this task i used some commands: mkdir - create directory, ls - look to point 4, cp - copy failes or directories, rm -r - remove directory with files. 
 
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/p51.JPG" width = "300">
 
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/p52.JPG" width = "300">
 
 
 6. Hard and symdolik links are very usefull thinghs. Hard and symdolik links are very usefull thinghs.
@@ -310,13 +310,13 @@ A symbolic or soft link is an actual link to the original file, whereas a hard l
 
 Example:
 
-<img src="" width = "300">
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/links1.JPG" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/links2.JPG" width = "300">
 
 After deleted origin labwork2 file the symlink has broken, because it works with path of file. But hard link was working, because it works with information in file.
 
 
 7. "Locate" utility - list files in databases that match a pattern. Before search some file with "locate" utility, should use "updatedb" command.
 
-<img src="" width = "300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/3b5a90908d869f57fbd11997fbb38ec8511cbf4d/task5.1/images/locate.JPG" width = "300">
 <img src="" width = "300">
