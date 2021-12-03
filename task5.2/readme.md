@@ -25,21 +25,24 @@ The UID can be from 0 to 65535. But UID = 0 is defined by the root user. UIDs fr
 
 4. To determine belonging of user to the specific group uses "groups" command:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7d998687cf2cc03d53cecc007c542163ac1b7a89/task5.2/images/boloning%20to%20group.JPG" width="300">
  
 5. For adding user to linux system uses "adduser" commnd. After enter it you should insert password for user (this is very importent point), full name, room number, work phone, home phone, some other information. After this will be created user and his home directory.   
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/7d998687cf2cc03d53cecc007c542163ac1b7a89/task5.2/images/adduser.JPG" width="300">
 
 6. We can rename user. Thare are uses "usermod -l <old name> <new name>" command. But, home directory stay with old name and should be renamed manualy.
 
 	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# usermod -l  newtest test
 	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# mv /home/test/ /home/newtest
 	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# ls /home/
+
 	mrbit  newtest
 	newtest@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4$ id newtest
+
 	uid=1001(newtest) gid=1001(test) groups=1001(test)
 	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# ls /home/
+
 	mrbit  test
 	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# su - newtest
 	newtest@devopsonline:~$
