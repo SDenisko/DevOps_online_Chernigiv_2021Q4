@@ -38,12 +38,15 @@ The UID can be from 0 to 65535. But UID = 0 is defined by the root user. UIDs fr
 	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# ls /home/
 
 	mrbit  newtest
+
 	newtest@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4$ id newtest
 
 	uid=1001(newtest) gid=1001(test) groups=1001(test)
+
 	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# ls /home/
 
 	mrbit  test
+
 	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# su - newtest
 	newtest@devopsonline:~$
 
