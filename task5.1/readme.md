@@ -12,7 +12,7 @@ Retype new password:
 
 passwd: password updated successfully
 
-"passwd" command chages password of user. /etc/passwd file containe encrypted information about users, privilages and passwords.
+"passwd" command chages password of user. /etc/passwd file containe information about users and can containe encrypted passwords.
 
 /etc/group containe list of user groups.
 
