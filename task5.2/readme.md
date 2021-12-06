@@ -116,4 +116,159 @@ From "man":
 
 	test@devopsonline:~$
 
-11. 
+
+11. Some times for get long information about directory uses the "ls" command with "-l" and "-d" keys. Let's describe of the command result:
+
+The first character shows the type file: d - directory;
+
+The next nine characters are showing the file permitions:
+( r - permition to read the file; w - permition to write the file; x - permition to execute the file; t - stiky bit; s - setgit and setuid bits;)
+ - The following set of three characters (rwx) is for the owner permissions.
+ - The second set of three characters (rwx) is for the Group permissions.
+ - The third set of three characters (rwx) is for the All Users permissions.
+
+The next two fields root root are showing the file owner and the group, followed by the size of the file (4096), shown in bytes. Use the -h option if you want to print sizes in a human-readable format. 
+You can change the file owner using the chown command.
+
+The last column is the name of the file/directory.
+
+	root@devopsonline:/home/mrbit# ls -l DevOps_online_Chernigiv_2021Q4/
+
+	total 40
+
+	-rw-r--r-- 1 root root 11357 Nov  2 21:38 LICENSE
+
+	drwxr-xr-x 6 root root  4096 Nov  8 18:06 task1.1
+
+	drwxr-xr-x 3 root root  4096 Nov  8 18:08 task2.1
+
+	drwxr-xr-x 3 root root  4096 Nov 16 14:58 task2.2
+
+	drwxr-xr-x 3 root root  4096 Nov 19 18:25 task3
+
+	drwxr-xr-x 3 root root  4096 Nov 28 19:55 task4.1
+
+	drwxr-xr-x 3 root root  4096 Dec  3 09:47 task5.1
+
+	drwxr-xr-x 3 root root  4096 Dec  6 08:54 task5.2
+
+	root@devopsonline:/home/mrbit# ls -ld /tmp/
+
+	drwxrwxrwt 13 root root 4096 Dec  6 09:49 /tmp/
+
+12. Any file in linux has owner, this owner has the marks ID (UID - user id). For list of the uid of the file/folder  uses "ls" command with "-l" "-n" keyes.
+
+	root@devopsonline:/home/mrbit# ls -lnd /home/mrbit/
+
+	drwxr-xr-x 7 1000 1000 4096 Dec  6 09:34 /home/mrbit/
+
+"1000" and "1000" - thare are UID and GID.
+
+13. To change the owner of the file/directory uses "chown" command.
+Some keyes for "chown" command from man:
+
+	-c    like verbose but report only when a change is made
+
+	-f     suppress most error messages
+
+	-v      output a diagnostic for every file processed
+
+	--dereference      affect the referent of each symbolic link (this is the default), rather than the symbolic link itself
+
+	-R     operate on files and directories recursively
+
+	-H     if a command line argument is a symbolic link to a directory, traverse it
+
+
+ For example let's change owner of file from root user to test user:
+
+	root@devopsonline:/home/mrbit# touch /home/testfile
+
+	root@devopsonline:/home/mrbit# ls -l /home/testfile
+
+	-rw-r--r-- 1 root root 0 Dec  6 12:12 /home/testfile
+
+	root@devopsonline:/home/mrbit# id test
+
+	uid=1001(test) gid=1001(test) groups=1001(test)
+
+	root@devopsonline:/home/mrbit# chown 1001 /home/testfile
+
+	root@devopsonline:/home/mrbit# ls -l /home/testfile
+
+	-rw-r--r-- 1 test root 0 Dec  6 12:12 /home/testfile
+
+To change the mode of the file uses "chmod" command. Keyes: 
+ - u (owner) file's owner;
+ - g (group) users who are members of the file's group;
+ - o (others) users who are neither the file's owner nor members of the file's group;
+ - a (all) All three of the above, same as ugo;
+ - "+" adds the specified modes
+ - "-" removes the specified modes
+ - "=" the modes specified are to be made the exact modes for the specified classes
+
+For example let's change mode of the testfile:
+
+	root@devopsonline:~# ls -l /home/testfile
+
+	-rw-r--r-- 1 test root 28 Dec  6 12:18 /home/testfile
+
+	root@devopsonline:~# chmod u=rwx /home/testfile
+	root@devopsonline:~# ls -l /home/testfile
+
+	-rwxr--r-- 1 test root 28 Dec  6 12:18 /home/testfile
+
+	root@devopsonline:~# chmod g=rw /home/testfile
+	root@devopsonline:~# ls -l /home/testfile
+
+	-rwxrw-r-- 1 test root 28 Dec  6 12:18 /home/testfile
+
+	root@devopsonline:~# chmod o+rw /home/testfile
+	root@devopsonline:~# chmod g+x /home/testfile
+	root@devopsonline:~# chmod u-x /home/testfile
+	root@devopsonline:~# ls -l /home/testfile
+
+	-rw-rwxrw- 1 test root 28 Dec  6 12:18 /home/testfile
+
+	root@devopsonline:~# chmod a-rw /home/testfile
+	root@devopsonline:~# ls -l /home/testfile
+
+	------x--- 1 test root 28 Dec  6 12:18 /home/testfile
+
+	root@devopsonline:~# chmod o-x /home/testfile
+	root@devopsonline:~# ls -l /home/testfile
+
+	------x--- 1 test root 28 Dec  6 12:18 /home/testfile
+
+	root@devopsonline:~# chmod g-x /home/testfile
+	root@devopsonline:~# ls -l /home/testfile
+
+	---------- 1 test root 28 Dec  6 12:18 /home/testfile
+
+	root@devopsonline:~# chmod gou+rw /home/testfile
+	root@devopsonline:~# chmod u+x /home/testfile
+	root@devopsonline:~# chmod o-w /home/testfile
+	root@devopsonline:~# ls -l /home/testfile
+
+	-rwxrw-r-- 1 test root 28 Dec  6 12:18 /home/testfile
+
+Numeric way:
+r  ​(read) = 4
+w (write) = 2
+x (execute) = 1
+without permitions = 0
+
+read+write+execute=4+2+1=7
+read+write=4+2=6
+
+Example:
+
+	root@devopsonline:~# chmod 644 /home/testfile
+	root@devopsonline:~# ls -l /home/testfile
+
+	-rw-r--r-- 1 test root 28 Dec  6 12:18 /home/testfile
+
+14. When user create file or folder system define to it some permissions. "umask" - there are user mask which define this permissions. Umask for all users sets in etc/.bashrc or /etc/.profile.  As default it is "0022".
+
+  
+ 
