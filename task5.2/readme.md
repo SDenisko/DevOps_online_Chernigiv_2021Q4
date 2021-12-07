@@ -270,5 +270,57 @@ Example:
 
 14. When user create file or folder system define to it some permissions. "umask" - there are user mask which define this permissions. Umask for all users sets in etc/.bashrc or /etc/.profile.  As default it is "0022".
 
+15. The sticky bit is usually used for a folder especially to protect files in it. If it is set for a folder, then only the owner of the file can delete a file in the folder. The chmod command is used to set the sticky bit.
+An example of a folder with a sticky bit /tmp.
+
+	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# ls -l / | grep tmp
+
+	drwxrwxrwt  13 root root  4096 Dec  7 09:08 tmp
+
+	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# chmod +t /home/testfolder
+	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# ls -l /home/
+
+	total 16
+
+	drwxr-xr-x 7 mrbit mrbit 4096 Dec  7 08:43 mrbit
+
+	drwxr-xr-x 3 test  test  4096 Dec  6 12:18 test
+
+	-rw-r--r-T 1 test  root    28 Dec  6 12:18 testfile
+
+	drwxr-xr-t 2 root  root  4096 Dec  7 09:28 testfolder
   
- 
+16. First of all, you need to select a shell in the script file. The most commonly used shell is bash. In this case, the first line should be:
+#! / bin / bash
+After that there should be a program text.
+The file must be executable to use this script. To do this, use the command chmod u + x. 
+For check attributes of the file is used "lsattr" command. 
+Example:
+
+	root@devopsonline:/home/mrbit/DevOps_online_Chernigiv_2021Q4# lsattr /home/testfile
+
+	--------------e----- /home/testfile
+
+Any file can has a lot of attributes:
+
+	a — Append only. No one can overwrite, delete, rename, or hard link the file. Must be root to change.
+	A — Do not record atime for this file.
+	c — Compress file, if supported.
+	C — Suppress copy on write, if supported.
+	d — Do not backup using thedump utility (and possibly others).
+	D — Write directory changes synchronously to disk.
+	e — Do not fragment file; allocate extents contiguously
+	i — Immutable; do not allow any changes. Must be root or have special permissions to change.
+	j — Control journaling for ext file systems.
+	P — Enforce project hierarchy; files inherit directory project numbers and can’t move into directories that do not match.
+	s — Securely delete the file when deleting, if supported.
+	S — Write changes directly to disk (synchronous).
+	t — Prevents tail merging on filesystems that do tail merging.
+	T — Controls block allocation for some filesystems by identifying the directory as a top-level container. For example, /home is a top level container where subdirectories are not really related and are unlikely to have steady access patterns between them.
+	u — Save file on deletion for possible undeletion with appropriate tools.
+	E — Error when trying to compress.
+	h — File stored as huge file (indicates the file has been larger than 2TB at some point).
+	I — File uses hashed tree index.
+	N — File is stored inside inode.
+
+for change attribute of the file uses "chattr" command.
