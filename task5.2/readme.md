@@ -323,4 +323,4 @@ Any file can has a lot of attributes:
 	I — File uses hashed tree index.
 	N — File is stored inside inode.
 
-for change attribute of the file uses "chattr" command.
+For change attribute of the file is used "chattr" command.
