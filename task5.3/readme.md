@@ -44,36 +44,36 @@ For BSD formats and when the stat keyword is used, additional characters may be 
 	-T     Hide threads and only show processes.
 	-u     Show uid transitions.
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/pstree.JPG" width="300">
 
 3. "proc" file system - special file system in unix-system, which is used to get information from the kernel about a system processes.
 All information about processes are in the /proc directory. Let's look in it:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/procfs.jpg" width="300">
 
 4. There are system information in /proc directory. There are RAM, CPU e.t.c., for example: 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/cpuinfo.jpg" width="300">
 
 5. For get information about process (owner, state e.t.c.) is used ps command. Let's try:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/ps.jpg" width="300">
 
 6. All kernel processes are created by the kthread process, which has PID = 2. So, all child processes are kernel processes. Let's take a look at them:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/ps_kernel.JPG" width="300">
 
 User processes have a different PID from 2. Let's take a look at them:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/ps_user.JPG" width="300">
 
 7. For print all processes in system is used "ps -aux" command. Let's take a look at them:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/ps_state.jpg" width="300">
 
 8. For display only the processes of a specific user is used "ps -U <username>" command. Let's try: 
 
-<img src="" width="">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/ps_for_user.JPG" width="">
 
 9. We can see list of other programs for analyze the processes in man page for ps command . Take a look at them:
 
@@ -84,11 +84,11 @@ User processes have a different PID from 2. Let's take a look at them:
 
 10. "top" command is used for display information about processes in real time.
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/top.JPG" width="300">
 
 11. If we need to display real-time processes of a specific user, then we should use the -U <username> key for the "top" command:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/top_user.JPG" width="300">
 
 12.   
 
