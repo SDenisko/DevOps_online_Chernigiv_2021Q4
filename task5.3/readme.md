@@ -25,7 +25,7 @@ For BSD formats and when the stat keyword is used, additional characters may be 
 	N	low-priority (nice to other users)
 	L	has pages locked into memory (for real-time and custom IO)
 	s	is a session leader
-	I	is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
+	l	is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
 	+	is in the foreground process group
 
 
@@ -55,4 +55,40 @@ All information about processes are in the /proc directory. Let's look in it:
 
 <img src="" width="300">
 
-5.  
+5. For get information about process (owner, state e.t.c.) is used ps command. Let's try:
+
+<img src="" width="300">
+
+6. All kernel processes are created by the kthread process, which has PID = 2. So, all child processes are kernel processes. Let's take a look at them:
+
+<img src="" width="300">
+
+User processes have a different PID from 2. Let's take a look at them:
+
+<img src="" width="300">
+
+7. For print all processes in system is used "ps -aux" command. Let's take a look at them:
+
+<img src="" width="300">
+
+8. For display only the processes of a specific user is used "ps -U <username>" command. Let's try: 
+
+<img src="" width="">
+
+9. We can see list of other programs for analyze the processes in man page for ps command . Take a look at them:
+
+
+	SEE ALSO
+	       pgrep(1), pstree(1), top(1), proc(5).
+
+
+10. "top" command is used for display information about processes in real time.
+
+<img src="" width="300">
+
+11. If we need to display real-time processes of a specific user, then we should use the -U <username> key for the "top" command:
+
+<img src="" width="300">
+
+12.   
+
