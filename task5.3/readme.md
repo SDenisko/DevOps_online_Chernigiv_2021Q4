@@ -90,5 +90,18 @@ User processes have a different PID from 2. Let's take a look at them:
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/47c412eb4c4fcacb998816de496bceef0e6a7552/task5.3/images/top_user.JPG" width="300">
 
-12.   
+12. To control "top" command is used a lot of interactive commands, some of them:
+
+ - M and T - to sort all Linux running processes by Process ID.
+ - M and P - to sort all Linux running processes by Memory usage.
+ - M nad T - to sort all Linux running processes by running time.
+ - z - display the running process in color
+ - c - display the absolute path of the running process.
+ - By default screen refresh interval is set to 3.0 seconds, the same can be changed by pressing the ‘d‘ option in running the top command to set desired interval time.
+ - You can kill a process after finding the PID of the process by pressing the ‘k‘ option in running the top command without closing the top window as shown below.
+ - To sort all running processes by CPU utilization, simply press Shift+P key
+ - You can use the ‘r‘ option to change the priority of the process also called Renice.
+ - To list the load information of your CPU cores, simply press 1 to list the CPU core details.
+ - Press 'i' to get the list of idle/sleeping processes.
+ - Press the ‘h‘ option to obtain the top command help
 
