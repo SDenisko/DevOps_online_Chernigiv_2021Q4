@@ -307,10 +307,10 @@ Some keyes for ssh command in Windows10 OS:
 
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9ca18eb9b6c107f875e82ed334c88a493aadfeca/task5.3/images/winssh.JPG" width="300">
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9ca18eb9b6c107f875e82ed334c88a493aadfeca/task5.3/images/winsshkeygen.JPG" width="300">
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9ca18eb9b6c107f875e82ed334c88a493aadfeca/task5.3/images/winsshcommand.JPG" width="300">
 
 2. 
