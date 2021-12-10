@@ -183,6 +183,7 @@ Let's try increase priority for the apt list --upgradable command:
 	mrbit@devopsonline:~$ sudo kill 12894
 
 Result:
+
 	64 bytes from 8.8.8.8: icmp_seq=1152 ttl=117 time=21.7 ms
 
 	64 bytes from 8.8.8.8: icmp_seq=1153 ttl=117 time=19.7 ms
@@ -282,3 +283,34 @@ nohup (No Hang Up) is a command in Linux systems that runs the process even afte
 
 ########Part 2#########
 
+1. Window 10 OS has embedded Openssh client. There are some commands:
+
+ - ssh-add <path to the private key> - add the private key to the windows.
+ - ssh <username>@<host> - ssh connection to the remove host.
+ - ssh-keygen - generate private key for current user.
+
+Some keyes for ssh command in Windows10 OS:
+
+	ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
+
+	           [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
+
+	           [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
+
+	           [-i identity_file] [-J [user@]host[:port]] [-L address]
+
+	           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
+
+	           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
+
+	           [-w local_tun[:remote_tun]] destination [command]
+
+
+
+<img src="" width="300">
+
+<img src="" width="300">
+
+<img src="" width="300">
+
+2. 
