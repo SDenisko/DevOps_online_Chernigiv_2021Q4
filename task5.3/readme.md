@@ -116,21 +116,21 @@ Window 1:Def: Cumulative mode Off.  System: Delay 3.0 secs; Secure mode Off.
 
 Sort by time+ :
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9eddcc59828abf62563f858dee88505847ab55c8/task5.3/images/time+.JPG" width="300">
 
 Sort by memory used:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9eddcc59828abf62563f858dee88505847ab55c8/task5.3/images/mem.JPG" width="300">
 
 Sort by user:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9eddcc59828abf62563f858dee88505847ab55c8/task5.3/images/user_sort.JPG" width="300">
 
 14. Priority of the process - there are how much CPU time will be given to process. Linux and UNIX® systems use a priority system with 40 priorities, ranging from -20 (highest priority) to 19 (lowest priority.
 Processes started by regular users usually have priority 0. To decrease the priority, we can use a regular user, to increase the priority, we need a superuser.
 The "nice" command displays our default priority and can increase/decrease it. For "renice" command is used PID of the process.
 
-Let's try increase priority fro the apt list --upgradable command:
+Let's try increase priority for the apt list --upgradable command:
 
 	mrbit@devopsonline:~$ sudo nice -n 18 apt list --upgradable
 
@@ -162,21 +162,19 @@ Let's try increase priority fro the apt list --upgradable command:
 
 	wget/focal-updates 1.20.3-1ubuntu2 amd64 [upgradable from: 1.20.3-1ubuntu1]
 
-<img src=""width="300" >
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9eddcc59828abf62563f858dee88505847ab55c8/task5.3/images/nice.JPG"width="300" >
 
 	mrbit@devopsonline:~$ sudo renice -n 15 12874
 
 	12874 (process ID) old priority 0, new priority 15
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9eddcc59828abf62563f858dee88505847ab55c8/task5.3/images/renice.JPG" width="300">
 
 15. For change priority with "top" command is used "r" key. Let's try:
 
-<img src=""width="300" >
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9eddcc59828abf62563f858dee88505847ab55c8/task5.3/images/top_priority20.JPG"width="300" >
 
-<img src=""width="300" >
-
-<img src=""width="300" >
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9eddcc59828abf62563f858dee88505847ab55c8/task5.3/images/top_priority201.JPG"width="300" >
 
 
 16. We can kill any process using "kill" command and PID of the process.
@@ -269,19 +267,9 @@ Example:
 The fg command, short for the foreground, is a command that moves a background process on your current Linux shell to the foreground. This contrasts the bg command, short for background, that sends a process running in the foreground to the background in the current shell.  
 nohup (No Hang Up) is a command in Linux systems that runs the process even after logging out from the shell/terminal. Usually, every process in Linux systems is sent a SIGHUP (Signal Hang UP) which is responsible for terminating the process after closing/exiting the terminal.
 
-	mrbit@devopsonline:~$ jobs
 
-	[1]-  Stopped                 nohup ping 8.8.8.8
-
-	[2]   Running                 sudo nohup ping 8.8.8.8 &
-
-	[3]   Running                 nohup ping 127.0.0.1 &
-
-	[4]   Running                 nohup ping 127.0.0.1 &
-
-	[5]+  Stopped                 top
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9eddcc59828abf62563f858dee88505847ab55c8/task5.3/images/fg_bg_jobs.JPG" width="300">
 
 
-<img src="" width="300">
-
+########Part 2#########
 
