@@ -92,16 +92,196 @@ User processes have a different PID from 2. Let's take a look at them:
 
 12. To control "top" command is used a lot of interactive commands, some of them:
 
- - M and T - to sort all Linux running processes by Process ID.
- - M and P - to sort all Linux running processes by Memory usage.
- - M nad T - to sort all Linux running processes by running time.
- - z - display the running process in color
- - c - display the absolute path of the running process.
- - By default screen refresh interval is set to 3.0 seconds, the same can be changed by pressing the ‘d‘ option in running the top command to set desired interval time.
- - You can kill a process after finding the PID of the process by pressing the ‘k‘ option in running the top command without closing the top window as shown below.
- - To sort all running processes by CPU utilization, simply press Shift+P key
- - You can use the ‘r‘ option to change the priority of the process also called Renice.
- - To list the load information of your CPU cores, simply press 1 to list the CPU core details.
- - Press 'i' to get the list of idle/sleeping processes.
- - Press the ‘h‘ option to obtain the top command help
+Window 1:Def: Cumulative mode Off.  System: Delay 3.0 secs; Secure mode Off.
+
+ - Z,B,E,e   Global: 'Z' colors; 'B' bold; 'E'/'e' summary/task memory scale
+ -  l,t,m     Toggle Summary: 'l' load avg; 't' task/cpu stats; 'm' memory info
+ -  0,1,2,3,I Toggle: '0' zeros; '1/2/3' cpus or numa node views; 'I' Irix mode
+ -  f,F,X     Fields: 'f'/'F' add/remove/order/sort; 'X' increase fixed-width
+
+ -  L,&,<,> . Locate: 'L'/'&' find/again; Move sort column: '<'/'>' left/right
+ -  R,H,J,C . Toggle: 'R' Sort; 'H' Threads; 'J' Num justify; 'C' Coordinates
+ -  c,i,S,j . Toggle: 'c' Cmd name/line; 'i' Idle; 'S' Time; 'j' Str justify
+ -  x,y     . Toggle highlights: 'x' sort field; 'y' running tasks
+ -  z,b     . Toggle: 'z' color/mono; 'b' bold/reverse (only if 'x' or 'y')
+ -  u,U,o,O . Filter by: 'u'/'U' effective/any user; 'o'/'O' other criteria
+ -  n,#,^O  . Set: 'n'/'#' max tasks displayed; Show: Ctrl+'O' other filter(s)
+ -  V,v     . Toggle: 'V' forest view; 'v' hide/show forest view children
+
+ -  k,r       Manipulate tasks: 'k' kill; 'r' renice
+ -  d or s    Set update interval
+ -  W,Y       Write configuration file 'W'; Inspect other output 'Y'
+
+13. Let's try sort processes in "top" window: 
+
+Sort by time+ :
+
+<img src="" width="300">
+
+Sort by memory used:
+
+<img src="" width="300">
+
+Sort by user:
+
+<img src="" width="300">
+
+14. Priority of the process - there are how much CPU time will be given to process. Linux and UNIX® systems use a priority system with 40 priorities, ranging from -20 (highest priority) to 19 (lowest priority.
+Processes started by regular users usually have priority 0. To decrease the priority, we can use a regular user, to increase the priority, we need a superuser.
+The "nice" command displays our default priority and can increase/decrease it. For "renice" command is used PID of the process.
+
+Let's try increase priority fro the apt list --upgradable command:
+
+	mrbit@devopsonline:~$ sudo nice -n 18 apt list --upgradable
+
+	Listing... Done
+
+	gitlab-ce/focal 14.5.2-ce.0 amd64 [upgradable from: 14.4.1-ce.0]
+
+	libgl1-mesa-dri/focal-updates 21.0.3-0ubuntu0.3~20.04.5 amd64 [upgradable from: 21.0.3-0ubuntu0.3~20.04.4]
+
+	libglapi-mesa/focal-updates 21.0.3-0ubuntu0.3~20.04.5 amd64 [upgradable from: 21.0.3-0ubuntu0.3~20.04.4]
+
+	libglx-mesa0/focal-updates 21.0.3-0ubuntu0.3~20.04.5 amd64 [upgradable from: 21.0.3-0ubuntu0.3~20.04.4]
+
+	libgs9-common/focal-updates 9.50~dfsg-5ubuntu4.4 all [upgradable from: 9.50~dfsg-5ubuntu4.3]
+
+	libgs9/focal-updates 9.50~dfsg-5ubuntu4.4 amd64 [upgradable from: 9.50~dfsg-5ubuntu4.3]
+
+	libnetplan0/focal-updates 0.103-0ubuntu5~20.04.5 amd64 [upgradable from: 0.103-0ubuntu5~20.04.3]
+
+	libssl1.1/focal-updates 1.1.1f-1ubuntu2.10 amd64 [upgradable from: 1.1.1f-1ubuntu2.9]
+
+	mesa-vulkan-drivers/focal-updates 21.0.3-0ubuntu0.3~20.04.5 amd64 [upgradable from: 21.0.3-0ubuntu0.3~20.04.4]
+
+	netplan.io/focal-updates 0.103-0ubuntu5~20.04.5 amd64 [upgradable from: 0.103-0ubuntu5~20.04.3]
+
+	openssl/focal-updates 1.1.1f-1ubuntu2.10 amd64 [upgradable from: 1.1.1f-1ubuntu2.9]
+
+	ubuntu-advantage-tools/focal-updates 27.4.2~20.04.1 amd64 [upgradable from: 27.4.1~20.04.1]
+
+	wget/focal-updates 1.20.3-1ubuntu2 amd64 [upgradable from: 1.20.3-1ubuntu1]
+
+<img src=""width="300" >
+
+	mrbit@devopsonline:~$ sudo renice -n 15 12874
+
+	12874 (process ID) old priority 0, new priority 15
+
+<img src="" width="300">
+
+15. For change priority with "top" command is used "r" key. Let's try:
+
+<img src=""width="300" >
+
+<img src=""width="300" >
+
+<img src=""width="300" >
+
+
+16. We can kill any process using "kill" command and PID of the process.
+
+	mrbit@devopsonline:~$ sudo kill 12894
+	mrbit@devopsonline:~$
+
+Result:
+	64 bytes from 8.8.8.8: icmp_seq=1152 ttl=117 time=21.7 ms
+	64 bytes from 8.8.8.8: icmp_seq=1153 ttl=117 time=19.7 ms
+	64 bytes from 8.8.8.8: icmp_seq=1154 ttl=117 time=22.8 ms
+	64 bytes from 8.8.8.8: icmp_seq=1155 ttl=117 time=19.8 ms
+	64 bytes from 8.8.8.8: icmp_seq=1156 ttl=117 time=19.8 ms
+	64 bytes from 8.8.8.8: icmp_seq=1157 ttl=117 time=21.2 ms
+	Terminated
+
+List of the command which we can send with "kill"
+
+	mrbit@devopsonline:~$ kill -l
+
+	 1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+
+	 6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL     10) SIGUSR1
+
+	11) SIGSEGV     12) SIGUSR2     13) SIGPIPE     14) SIGALRM     15) SIGTERM
+
+	16) SIGSTKFLT   17) SIGCHLD     18) SIGCONT     19) SIGSTOP     20) SIGTSTP
+
+	21) SIGTTIN     22) SIGTTOU     23) SIGURG      24) SIGXCPU     25) SIGXFSZ
+
+	26) SIGVTALRM   27) SIGPROF     28) SIGWINCH    29) SIGIO       30) SIGPWR
+
+	31) SIGSYS      34) SIGRTMIN    35) SIGRTMIN+1  36) SIGRTMIN+2  37) SIGRTMIN+3
+
+	38) SIGRTMIN+4  39) SIGRTMIN+5  40) SIGRTMIN+6  41) SIGRTMIN+7  42) SIGRTMIN+8
+
+	43) SIGRTMIN+9  44) SIGRTMIN+10 45) SIGRTMIN+11 46) SIGRTMIN+12 47) SIGRTMIN+13
+
+	48) SIGRTMIN+14 49) SIGRTMIN+15 50) SIGRTMAX-14 51) SIGRTMAX-13 52) SIGRTMAX-12
+
+	53) SIGRTMAX-11 54) SIGRTMAX-10 55) SIGRTMAX-9  56) SIGRTMAX-8  57) SIGRTMAX-7
+
+	58) SIGRTMAX-6  59) SIGRTMAX-5  60) SIGRTMAX-4  61) SIGRTMAX-3  62) SIGRTMAX-2
+
+	63) SIGRTMAX-1  64) SIGRTMAX
+
+SIGINT - Interrupt (request termination) of the process. This is the signal generated by the CTRL-C control sequence.
+SIGKILL - Force termination of the process (This signal may not be overridden by the process).
+SIGTERM	- Request Termination of the process.
+SIGTSTP - Stop (suspend) the process. This is the signal generated by the CTRL-Z control sequence.
+SIGINT - Signals when the Linux user presses ‘CONTROL-C’
+SIGHUP - Hangs up signals when controlling the terminal or at the end of the controlling processes.
+SIGQUIT - Signals when the Linux user presses ‘CONTROL-D’.
+
+
+Example:
+
+	mrbit@devopsonline:~$ kill -s SIGKILL 13536
+
+	.....
+
+	64 bytes from 8.8.8.8: icmp_seq=26 ttl=117 time=21.9 ms
+
+	64 bytes from 8.8.8.8: icmp_seq=27 ttl=117 time=20.8 ms
+
+	64 bytes from 8.8.8.8: icmp_seq=28 ttl=117 time=21.9 ms
+
+	64 bytes from 8.8.8.8: icmp_seq=29 ttl=117 time=23.5 ms
+
+	Killed
+
+
+	mrbit@devopsonline:~$ kill -s SIGSTOP 13538
+
+	...
+
+	64 bytes from 8.8.8.8: icmp_seq=31 ttl=117 time=29.7 ms
+
+	64 bytes from 8.8.8.8: icmp_seq=32 ttl=117 time=24.0 ms
+
+	64 bytes from 8.8.8.8: icmp_seq=33 ttl=117 time=22.1 ms
+
+	64 bytes from 8.8.8.8: icmp_seq=34 ttl=117 time=21.5 ms
+
+
+	[1]+  Stopped                 ping 8.8.8.8
+
+
+17. The jobs command displays the status of jobs started in the current terminal window. Jobs are numbered starting from 1 for each session. The job ID numbers are used by some programs instead of PIDs (for example, by fg and bg commands).
+The fg command, short for the foreground, is a command that moves a background process on your current Linux shell to the foreground. This contrasts the bg command, short for background, that sends a process running in the foreground to the background in the current shell.  
+nohup (No Hang Up) is a command in Linux systems that runs the process even after logging out from the shell/terminal. Usually, every process in Linux systems is sent a SIGHUP (Signal Hang UP) which is responsible for terminating the process after closing/exiting the terminal.
+
+	mrbit@devopsonline:~$ jobs
+
+	[1]-  Stopped                 nohup ping 8.8.8.8
+
+	[2]   Running                 sudo nohup ping 8.8.8.8 &
+
+	[3]   Running                 nohup ping 127.0.0.1 &
+
+	[4]   Running                 nohup ping 127.0.0.1 &
+
+	[5]+  Stopped                 top
+
+
+<img src="" width="300">
+
 
