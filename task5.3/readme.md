@@ -7,7 +7,7 @@ Any process in linux can has 4 statce:
 
 Let's try look at processes list:
 
-<img src="" width="300"> 
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/8688f0c40aaeb57ebef8fe47fd140d4e4329e5c8/task5.3/images/ps.jpg" width="300"> 
 
 
 	D	uninterruptible sleep (usually IO)
