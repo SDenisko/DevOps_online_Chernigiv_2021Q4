@@ -313,4 +313,161 @@ Some keyes for ssh command in Windows10 OS:
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/9ca18eb9b6c107f875e82ed334c88a493aadfeca/task5.3/images/winsshcommand.JPG" width="300">
 
-2. 
+2. The best ways to Secure our SSH Server:
+
+ - Use SSH Protocol Version 2.
+ - Use SSH keys instead of passwords or at list use strong usernames and passwords
+ - Avoid Port 22.
+ - Disable SSH Access with the Root account.
+ - Configure idle timeout interval.
+ - Disable empty passwords.
+ - Limit users SSH access.
+ - Allow only specific IP addreses access.
+ - Enable Two-Factor Authentication, for example Google Authentification.
+
+Before any changes should be make backup of configuration file:
+
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_copy
+
+<img src="" width ="300">
+
+<img src="" width ="300">
+
+<img src="" width ="300">
+
+Let's generate new ssh key for connection. SSH keys are 2048 bits by default. We can change this parameter to more security, for example to 4096 bits.
+
+<img src="" width ="300">
+
+<img src="" width ="300">
+
+<img src="" width ="300">
+
+
+Port forwarding:
+
+
+<img src="" width ="300">
+
+
+
+
+Let's check results:
+
+
+
+	C:\WINDOWS\system32>ssh -p 9922 mrbit@127.0.0.1
+
+	The authenticity of host '[127.0.0.1]:9922 ([127.0.0.1]:9922)' can't be established.
+
+	ECDSA key fingerprint is SHA256:JV9P1kHWanFWhV6YwchmFv3OaL/na85hQjvQc1l4OCs.
+
+	Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+	Warning: Permanently added '[127.0.0.1]:9922' (ECDSA) to the list of known hosts.
+
+	mrbit@127.0.0.1's password:
+
+	Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-91-generic x86_64)
+
+	 * Documentation:  https://help.ubuntu.com
+
+	 * Management:     https://landscape.canonical.com
+
+	 * Support:        https://ubuntu.com/advantage
+
+	  System information as of Sat 11 Dec 2021 08:59:32 AM UTC
+
+	  System load:  0.72              Processes:               146
+
+	  Usage of /:   75.0% of 8.79GB   Users logged in:         1
+
+	  Memory usage: 16%               IPv4 address for enp0s3: 10.0.2.15
+
+	  Swap usage:   0%
+
+	 * Super-optimized for small spaces - read how we shrank the memory
+
+	   footprint of MicroK8s to make it the smallest full K8s around.
+
+	   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+	13 updates can be applied immediately.
+
+	To see these additional updates run: apt list --upgradable
+
+	*** System restart required ***
+
+	Last login: Fri Dec 10 16:25:55 2021 from 10.0.2.2
+
+	mrbit@devopsonline:~$
+
+
+
+3. 
+
+Wireshark: 
+
+ssh connection:
+
+
+<img src="" width="300">
+
+telnet connection:
+
+<img src="" width="300">
+
+
+
+TCPDUMP:
+
+ssh connection:
+
+
+	mrbit@devopsonline:~/DevOps_online_Chernigiv_2021Q4$ sudo tcpdump --interface any -c 10 -nn
+
+	tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+
+	listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
+
+	10:26:50.916625 IP 10.0.2.15.22 > 10.0.2.2.56663: Flags [P.], seq 3317007567:3317007615, ack 1118969558, win 65535, length 48
+
+	10:26:50.917060 IP 10.0.2.2.56663 > 10.0.2.15.22: Flags [.], ack 48, win 65535, length 0
+
+	10:26:50.917125 IP 10.0.2.15.22 > 10.0.2.2.56663: Flags [P.], seq 48:96, ack 1, win 65535, length 48
+
+	10:26:50.917345 IP 10.0.2.2.56663 > 10.0.2.15.22: Flags [.], ack 96, win 65535, length 0
+
+	10:26:50.917459 IP 10.0.2.15.22 > 10.0.2.2.56663: Flags [P.], seq 96:144, ack 1, win 65535, length 48
+
+	10:26:50.917708 IP 10.0.2.2.56663 > 10.0.2.15.22: Flags [.], ack 144, win 65535, length 0
+
+	10:26:50.917855 IP 10.0.2.15.22 > 10.0.2.2.56663: Flags [P.], seq 144:192, ack 1, win 65535, length 48
+
+	10:26:50.918111 IP 10.0.2.2.56663 > 10.0.2.15.22: Flags [.], ack 192, win 65535, length 0
+
+	10:26:50.918987 IP 10.0.2.2.56663 > 10.0.2.15.22: Flags [.], ack 352, win 65535, length 0
+
+	10:26:50.919590 IP 10.0.2.2.56663 > 10.0.2.15.22: Flags [.], ack 480, win 65535, length 0
+
+	10 packets captured
+
+	48 packets received by filter
+
+	30 packets dropped by kernel
+
+
+Description of flags:
+
+
+	S	SYN	Connection Start
+
+	F	FIN	Connection Finish
+
+	P	PUSH	Data push
+
+	R	RST	Connection reset
+
+	.	ACK	Acknowledgment
+
+
