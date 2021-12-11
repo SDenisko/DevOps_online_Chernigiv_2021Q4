@@ -329,25 +329,25 @@ Before any changes should be make backup of configuration file:
 
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_copy
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/sshconf1.jpg" width ="300">
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/sshconf2.jpg" width ="300">
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/sshconf3.jpg" width ="300">
 
 Let's generate new ssh key for connection. SSH keys are 2048 bits by default. We can change this parameter to more security, for example to 4096 bits.
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/sshdsa.JPG" width ="300">
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/sshecdsa.JPG" width ="300">
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/rsa_key.JPG" width ="300">
 
 
 Port forwarding:
 
 
-<img src="" width ="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/portforwarding.JPG" width ="300">
 
 
 
@@ -411,11 +411,11 @@ Wireshark:
 ssh connection:
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/wireshark.JPG" width="300">
 
 telnet connection:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/ed8424883260c4d0b82ba9bf7597349c571e6e54/task5.3/images/telnet.JPG" width="300">
 
 
 
@@ -457,7 +457,7 @@ ssh connection:
 	30 packets dropped by kernel
 
 
-Description of flags:
+Description of the flags:
 
 
 	S	SYN	Connection Start
