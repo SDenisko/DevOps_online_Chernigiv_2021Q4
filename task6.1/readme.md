@@ -151,7 +151,7 @@ Let's check results:
 
 
 
- - traceroute to google.com from VM1 is very strange:
+ - traceroute to the google.com from VM1 is very strange:
 
 
 <img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6f55bdef589f62984ab3ff057e437642dd3c3600/task6.1/images/traceroute_to_the_google.JPG" width="300">
