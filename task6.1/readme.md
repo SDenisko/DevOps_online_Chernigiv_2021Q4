@@ -2,24 +2,31 @@ For accept  internet to internal network is needed next configurations:
 
 VM1 should has two network adapters, first for internet, second - internal network:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6f55bdef589f62984ab3ff057e437642dd3c3600/task6.1/images/VM1external.JPG" width="300">
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6f55bdef589f62984ab3ff057e437642dd3c3600/task6.1/images/VM1internal.JPG" width="300">
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6f55bdef589f62984ab3ff057e437642dd3c3600/task6.1/images/VM1netplan.JPG" width="300">
+
 
 
 For VM2 one network adapter is enough:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6f55bdef589f62984ab3ff057e437642dd3c3600/task6.1/images/VM2internal.JPG" width="300">
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6f55bdef589f62984ab3ff057e437642dd3c3600/task6.1/images/VM2netplan.JPG" width="300">
 
 For VM1 is needed next changes:
  - for allow forwarding uncommit the "net.ipv4.ip_forward=1" line  in the /etc/sysctl.conf file.
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6f55bdef589f62984ab3ff057e437642dd3c3600/task6.1/images/vm1sysctl.JPG" width="300">
+
+
  - add rules:
+
 	iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
 	iptables -A FORWARD -p udp --dport 53 -j ACCEPT
 
 
@@ -147,7 +154,7 @@ Let's check result:
  - traceroute to google.com from VM1 is very strange:
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/6f55bdef589f62984ab3ff057e437642dd3c3600/task6.1/images/traceroute_to_the_google.JPG" width="300">
 
 
 
