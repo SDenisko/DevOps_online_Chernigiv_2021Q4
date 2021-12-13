@@ -149,7 +149,7 @@ Let's check results:
 
 	===========================================================================
 
-	
+
 
  - traceroute to google.com from VM1 is very strange:
 
