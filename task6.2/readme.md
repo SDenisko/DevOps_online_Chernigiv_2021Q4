@@ -1,7 +1,9 @@
 1. Parameters of the network adapters for the VM1,VM2,VM3:
 
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/0ed239496293b9af91e89bc15e81e7d49d0cfe8e/task6.2/images/vm11network.JPG" width="300">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/0ed239496293b9af91e89bc15e81e7d49d0cfe8e/task6.2/images/vm12network.JPG" width="300">
 
 
 
@@ -16,12 +18,12 @@
 
 VM2:        
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/0ed239496293b9af91e89bc15e81e7d49d0cfe8e/task6.2/images/vm2network.JPG" width="300">
 
 
 VM3:
 
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/0ed239496293b9af91e89bc15e81e7d49d0cfe8e/task6.2/images/vm3network.JPG" width="300">
 
 
 2. Now we need to install and configure a DHCP server. In this case, we will use the dnsmasq package. Let's do that:
@@ -203,11 +205,18 @@ VM3:
 
 First of all we should change /etc/dnsmasq.conf file:
 
-<img src="" width="300">
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/0ed239496293b9af91e89bc15e81e7d49d0cfe8e/task6.2/images/dnsmasq_dnsconfig.JPG" width="300">
+
+
 
 Let's check results:
 
-<img src="" width="300">
+
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/0ed239496293b9af91e89bc15e81e7d49d0cfe8e/task6.2/images/dnsmasq_status.JPG" width="300">
+
+
 
 
 	# ping VM2
