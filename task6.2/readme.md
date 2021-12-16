@@ -242,3 +242,266 @@ Let's check results:
 DNS server works!
 
 
+
+	Dynamic Routing
+
+
+For this task we should install and configure quagga package on the VM1-VM3.
+Let's start:
+
+VM1: 
+
+1. apt install quagga
+
+2. create zebra.conf and ospfd.conf
+
+sudo touch /etc/quagga/zebra.conf
+sudo touch /etc/quagga/ospfd.conf
+
+3. Make owner of the files quagga user and quagga group:
+
+sudo chown quagga:quagga /etc/quagga/zebra.conf
+sudo chown quagga:quagga /etc/quagga/ospfd.conf
+
+4. Add config to the zebra.conf and to the ospfd.conf files: 
+
+root@devopsonline:/home/mrbit# cat /etc/quagga/zebra.conf
+
+	hostname devopsonline
+
+	password 123487654@
+
+	enable password 123487654@
+
+	log file /var/log/quagga/zebra.log
+
+	!
+
+	line vty
+
+	!
+
+
+
+root@devopsonline:/home/mrbit# cat /etc/quagga/ospfd.conf
+
+
+	log file /var/log/quagga/ospfd.log
+
+	router ospf
+
+	!router id got from the DHCP
+
+	 ospf router-id 192.168.2.1
+
+	 log-adjacency-changes
+
+	!to announce the routs lifted automaticaly
+
+	 redistribute kernel
+
+	!to annouce the routs before network connection
+
+	 redistribute connected
+
+	!to announce static routs
+
+	 redistribute static
+
+	!network and zone number of neighboring routers
+
+	 network 192.168.2.0/24 area 1
+
+	!
+	!network, which will be annonced, in our case this is 192.168.2.0 /24
+
+	access-list 20 permit 192.168.2.0 0.0.0.255
+
+	access-list 20 deny any
+
+	!
+	line vty
+	!
+
+5. Check and start service:
+
+sudo service zebra start
+sudo service zebra status
+
+sudo service ospfd start
+sudo service ospfd status
+
+
+VM2:
+
+
+1. apt install quagga
+
+2. create zebra.conf and ospfd.conf
+
+sudo touch /etc/quagga/zebra.conf
+sudo touch /etc/quagga/ospfd.conf
+
+3. Make owner of the files quagga user and quagga group:
+
+sudo chown quagga:quagga /etc/quagga/zebra.conf
+sudo chown quagga:quagga /etc/quagga/ospfd.conf
+
+4. Add config to the zebra.conf and to the ospfd.conf files:
+
+root@devopsonline:/home/mrbit# cat /etc/quagga/zebra.conf
+
+        hostname clonedevopsonline
+
+        password 123487654@
+
+        enable password 123487654@
+
+        log file /var/log/quagga/zebra.log
+
+        !
+
+        line vty
+
+        !
+
+
+
+root@devopsonline:/home/mrbit# cat /etc/quagga/ospfd.conf
+
+
+        log file /var/log/quagga/ospfd.log
+
+        router ospf
+
+        !router id got from the DHCP
+
+         ospf router-id 192.168.2.20
+
+         log-adjacency-changes
+
+        !to announce the routs lifted automaticaly
+
+         redistribute kernel
+
+        !to annouce the routs before network connection
+
+         redistribute connected
+
+        !to announce static routs
+
+         redistribute static
+
+        !network and zone number of neighboring routers
+
+         network 192.168.2.0/24 area 1
+
+        !
+        !network, which will be annonced, in our case this is 192.168.2.0 /24
+
+        access-list 20 permit 192.168.2.0 0.0.0.255
+
+        access-list 20 deny any
+
+        !
+        line vty
+        !
+
+5. Check and start service:
+
+sudo service zebra start
+sudo service zebra status
+
+sudo service ospfd start
+sudo service ospfd status
+
+
+VM3:
+
+
+1. apt install quagga
+
+2. create zebra.conf and ospfd.conf
+
+
+sudo touch /etc/quagga/zebra.conf
+sudo touch /etc/quagga/ospfd.conf
+
+
+3. Make owner of the files quagga user and quagga group:
+
+sudo chown quagga:quagga /etc/quagga/zebra.conf
+sudo chown quagga:quagga /etc/quagga/ospfd.conf
+
+4. Add config to the zebra.conf and to the ospfd.conf files:
+
+root@devopsonline:/home/mrbit# cat /etc/quagga/zebra.conf
+
+        hostname clonedevopsonline2
+
+        password 123487654@
+
+enable password 123487654@
+
+        log file /var/log/quagga/zebra.log
+
+        !
+
+        line vty
+
+        !
+
+
+
+root@devopsonline:/home/mrbit# cat /etc/quagga/ospfd.conf
+
+
+        log file /var/log/quagga/ospfd.log
+
+        router ospf
+
+        !router id got from the DHCP
+
+         ospf router-id 192.168.2.30
+
+         log-adjacency-changes
+
+        !to announce the routs lifted automaticaly
+
+         redistribute kernel
+
+        !to annouce the routs before network connection
+
+         redistribute connected
+
+        !to announce static routs
+
+         redistribute static
+
+        !network and zone number of neighboring routers
+
+         network 192.168.2.0/24 area 1
+
+        !
+        !network, which will be annonced, in our case this is 192.168.2.0 /24
+
+        access-list 20 permit 192.168.2.0 0.0.0.255
+
+        access-list 20 deny any
+
+        !
+        line vty
+        !
+
+5. Check and start service:
+sudo service zebra start
+sudo service zebra status
+
+sudo service ospfd start
+sudo service ospfd status
+
+
+
+
+
+
