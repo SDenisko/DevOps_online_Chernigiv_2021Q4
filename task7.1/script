@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+#####
+test -e /usr/bin/netstat
+if [ [ "$?" == "0" ]  ]
+then echo program is instaled
+else (apt install netstat -y)	
+#
+##########
+if [ "$1" == "--all" ] 
+	then echo Hostname Ipaddress: && (arp -a | awk '{print $1    $2  }')
+elif [ "$1"  ==  "--target" ]
+then echo IPaddress:opened ports: && (netstat -antl | awk '{print $4}') 
+else echo try againe --all or --target
+fi
