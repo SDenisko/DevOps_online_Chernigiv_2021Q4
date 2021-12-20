@@ -1,15 +1,16 @@
 #!/bin/bash
 #
-#####
-test -e /usr/bin/netstat
-if [ [ "$?" == "0" ]  ]
-then echo program is instaled
-else (apt install netstat -y)	
-#
-##########
+##### is nmap installed?
+test -e /usr/bin/nmap
+if [ "$?" == '0' ]
+then echo "Script works with Ubuntu/Debian systems" && echo "Program is instaled, let's start." && echo "Accessed keyes: --all or --target <host IP>"
+else (sudo apt install nmap -y)
+fi	
+########## --all key
 if [ "$1" == "--all" ] 
-	then echo Hostname Ipaddress: && (arp -a | awk '{print $1    $2  }')
+then (echo Accessed subnetworks on the host: && ip -o -f inet addr show | awk '/scope global/ {print $4}') && echo Hostnames and Ipaddreses: && (arp -a | awk '{print $1  $2  }')
+######## --target key
 elif [ "$1"  ==  "--target" ]
-then echo IPaddress:opened ports: && (netstat -antl | awk '{print $4}') 
-else echo try againe --all or --target
+then echo $2 ports open: && (nmap $2 --system-dns | grep open ) 
+else echo Try againe with the described parameter.
 fi

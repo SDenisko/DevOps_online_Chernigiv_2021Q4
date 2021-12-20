@@ -1,0 +1,5 @@
+!#/bin/bash/
+#
+#What search bots have accessed the site? (UA + IP)
+#
+cat apache_logs.txt | grep 'bot' | cut -d "\"" -f6 | sort | uniq
