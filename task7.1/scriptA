@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+##### is nmap installed?
+function check_PO {
+test -e /usr/bin/nmap
+if [ "$?" == "0" ]
+	then echo "Script works with Ubuntu/Debian systems" && echo "Program is instaled, let's start." && echo "Accessed keyes: --all or --target <host IP>"
+else (apt install nmap -y)
+fi
+}
+
+check_PO
+############## Ports #######################i
+function ports {
+port_first=1
+port_last=443
+for ((port=$port_first; port<=$port_last; port++))
+do
+	timeout 1 bash -c "</dev/tcp/$host/$port" &>/dev/null && echo "port $port is open"
+#  (echo >/dev/tcp/$host/$port) >/dev/null 2>&1 && echo "$host $port open"
+done
+}
+###
+############### hostname_IP #################
+function name_ip {
+echo Accessed subnetworks on the host: && ip -o -f inet addr show | awk '/scope global/ {print $4}'
+echo -n " Enter the first three tetrahedrons of subnetwork addresses in format xxx.xxx.xxx : "
+read netw
+	for i in $(seq 1 254); 
+do 
+	ping -4 -W1 -c1 $netw.$i >/dev/null 2>&1 && echo $netw.$i  $(host "$netw.$i" | awk '{print $5}') 
+done
+}
+#####################################################
+########## --all key
+	if [ "$1" == "--all" ] 
+then name_ip
+######## --target key
+	elif [ "$1"  ==  "--target" ]
+	then  host=$2  && echo ports on the $host is scaning, please wait some time...  && ports
+
+else echo Try againe with the described parameter.
+fi
