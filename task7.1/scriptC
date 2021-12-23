@@ -1,0 +1,67 @@
+#!/bin/bash
+####################################
+#Backup script
+##########################
+
+#######control of size of the Log.txt file############333
+function ctrl_log
+        {
+tail -n 350  $LOGFILE >/tmp/backuplog.tmp
+mv -f /tmp/backuplog.tmp $LOGFILE
+	}
+########control of number of the backup files##############
+function ctrl_v 
+{
+find $dest -type f -name "*.tar" -mtime +7 -exec rm -f {} \;
+}
+###############################################
+# What to backup. 
+src=$1
+##########################
+
+# Where to backup to.
+dest=$2
+##########################
+
+#files for compaire and log.txt file
+src_scr=$(pwd)
+touch $src_src/l1 
+touch $src_scr/l2
+touch $src_scr/Log.txt 
+LOGFILE=$src_scr/Log.txt
+
+#############################
+# Create archive filename.
+day=$(date +%F-%H%M)
+hostname=$(hostname -s)
+archive_file="Backup-$hostname-$day.tar"
+#############################
+# Long listing of files in $src for compare.
+ls -lh $src > $dest/l1
+
+ 	if diff -q /mnt/backup/l1 /mnt/backup/l2; 
+		then
+			echo "No files for backup $day" >>$LOGFILE
+	else
+
+# Print start status message.
+	date
+	echo "Backing up $src to $dest/$archive_file"
+	
+# Backup the files using tar.
+	tar -cvf $dest/$archive_file $src &>>$LOGFILE
+	status=$?
+# Print end status message.
+	echo "Backup finished $day" status = $status >>$LOGFILE
+	echo "Backup finished $day status = $status"
+
+# Long listing of files in $src for compare.
+ls -lh $src > $dest/l2
+
+	fi
+##control of size of the Log.txt file############333
+ctrl_log 
+#################################################
+###control of the versions##
+ctrl_v >>$LOGFILE
+###########	

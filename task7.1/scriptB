@@ -1,5 +1,7 @@
 #!/bin/bash/
 
+src=$1
+
 echo "1.  What search bots have accessed the site? (UA + IP)"
 echo "2.  From which ip were the most requests?"
 echo "3.  What is the most requested page?"
@@ -14,27 +16,27 @@ case $ch in
 #
 	1)
 # What search bots have accessed the site? (UA + IP)
-		cat apache_logs.txt | grep 'bot' | cut -d "\"" -f6 | sort | uniq -c
+		cat $src | grep 'bot' | cut -d "\"" -f6 | sort | uniq -c
 		;;
 	2)
 # From which ip were the most requests? 
-		awk '{ print $1}' apache_logs.txt | sort | uniq -c | sort -nr | head -n 1
+		awk '{ print $1}' $src | sort | uniq -c | sort -nr | head -n 1
 		;;
 	3)
 # What is the most requested page? 
-		awk '{ print $7}' apache_logs.txt | sort | uniq -c | sort -n | tail -n 2
+		awk '{ print $7}' $src | sort | uniq -c | sort -n | tail -n 2
 		;;
 	4)
 # How many requests were there from each ip? 
-		awk '{ print $1}' apache_logs.txt | sort | uniq -c | sort -nr
+		awk '{ print $1}' $src | sort | uniq -c | sort -nr
 		;;
 	5)
 # What non-existent pages were clients referred to?  
-		cat apache_logs.txt | grep error404 -B 1 | awk '{print $7}'| grep error404  -v
+		cat $src | grep error404 -B 1 | awk '{print $7}'| grep error404  -v
 		;;
 	6)
 # What time did site get the most requests?
-		awk '{ print $4}' apache_logs.txt | cut -d ":" -f2,3 | sort | uniq -c | sort -n | tail -n 10
+		awk '{ print $4}' $src | cut -d ":" -f2,3 | sort | uniq -c | sort -n | tail -n 10
 		;;
 	*)
 		echo uknown choice, try againe
