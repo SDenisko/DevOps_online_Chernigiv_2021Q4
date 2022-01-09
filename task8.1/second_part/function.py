@@ -7,7 +7,6 @@ def solv_square(a, b, c):
     d = discriminant(a, b, c)
     return roots(d, a, b, c)
 
-
 def discriminant(a, b, c):
     d = b**2 - 4*a*c
     return d

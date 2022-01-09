@@ -1,3 +1,3 @@
-import function
+import function #import functions from function file
 
 function.main()
