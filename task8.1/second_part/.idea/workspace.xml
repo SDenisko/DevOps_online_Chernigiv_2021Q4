@@ -30,7 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests for unitests.TestModule.test_roots">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="second_part" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,9 +96,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for unitests.TestModule.test_roots" />
         <item itemvalue="Python tests.Python tests for unitests.TestModule.test_discriminant" />
         <item itemvalue="Python tests.Python tests in unitests.py" />
-        <item itemvalue="Python tests.Python tests for unitests.TestModule.test_roots" />
       </list>
     </recent_temporary>
   </component>

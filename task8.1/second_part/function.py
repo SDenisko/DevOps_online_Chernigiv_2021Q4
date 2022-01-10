@@ -37,6 +37,5 @@ def main():
     a = validate_param(input('Please, enter value a:'))
     b = validate_param(input('Please, enter value b:'))
     c = validate_param(input('Please, enter value c:'))
-
     roots = solv_square(a, b, c)
     square_print(a, b, c, roots)
