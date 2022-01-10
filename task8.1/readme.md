@@ -46,7 +46,7 @@ Loops:
 
 Let's try to do some more seriously.
 
-In the second part of assignment 8.1, I decided to use PyCharm.
+In the second part of task 8.1, I decided to use PyCharm.
 According to the task, i need to write a script to solve the equation: ax ^ 2 + bx + c = 0.
 
 Some parameters: for a better study of python3, the script should have 6 functions (main (), validate_param (integer), discriminant (a, b, c), roots (d, a, b, c), solv_square (a, b, c) ) -> roots, Square_print (a, b, c, roots)), there should be unit tests.
