@@ -48,8 +48,10 @@ Let's try to do some more seriously.
 
 In the second part of assignment 8.1, I decided to use PyCharm.
 According to the task, i need to write a script to solve the equation: ax ^ 2 + bx + c = 0.
+
 Some parameters: for a better study of python3, the script should have 6 functions (main (), validate_param (integer), discriminant (a, b, c), roots (d, a, b, c), solv_square (a, b, c) ) -> roots, Square_print (a, b, c, roots)), there should be unit tests.
-I decided to split the script into three files: main.py, function.py, unitest.py. The "function.py" file contains all the functions, the unitest.py file contains all unit tests, and the main.py file contains only the call to the main () function.
+I decided to split the script into three files: main.py, function.py, unitest.py. 
+The "function.py" file contains all the functions, the unitest.py file contains all unit tests, and the main.py file contains only the call to the main () function.
 Let's try!
 
 function.py:
@@ -122,6 +124,10 @@ main.py:
 	function.main()
 
 
-<img src="" width="300">
-<img src="" width="300">
-<img src="" width="300">
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/1b084015a1954a95f2dabe65e7b9a5563d2a4ce8/task8.1/images/script_result.JPG" width="300">
+
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/1b084015a1954a95f2dabe65e7b9a5563d2a4ce8/task8.1/images/script_result2.JPG" width="300">
+
+
+<img src="https://github.com/SDenisko/DevOps_online_Chernigiv_2021Q4/blob/1b084015a1954a95f2dabe65e7b9a5563d2a4ce8/task8.1/images/script_unittests.JPG" width="300">
