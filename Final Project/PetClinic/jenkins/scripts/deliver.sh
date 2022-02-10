@@ -23,7 +23,7 @@ set +x
 #pwd
 #mkdir /tmp/petclinic_www
 #ppp=`ls /tmp | grep petclinic_www`
-cp /tmp/*.jar /var/lib/jenkins/workspace/petClinic/
+cp /var/lib/jenkins/workspace/petClinic/target/spring-*.jar /var/lib/jenkins/workspace/petClinic/
 #cd /var/lib/jenkins/workspace/petClinic/
 #docker build -t sioj/petclinic:1.0-SHAPSHOT .
 #java -jar /home/mrbit/petclinic/${NAME}-${VERSION}.jar
